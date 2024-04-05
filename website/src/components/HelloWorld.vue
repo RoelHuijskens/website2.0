@@ -8,7 +8,6 @@ export default {
     },
     imgDivStyle() {
       const image_path = 'https://raw.githubusercontent.com/RoelHuijskens/Website2.0/master/website/src/assets/imgs/' + this.image
-      console.log(`url(${image_path})`);
       return {
         backgroundImage: `url(${image_path})`,
         backgroundSize: 'cover', // Optional depending on your needs

@@ -4,6 +4,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <div class="app-holder">
+  <HelloWorld :title="'Utrecht University'" :content="'Time At the UU'" :image="'UU.jpg'" :index="1" />
   <HelloWorld :title="'Vrije Universiteit Amsterdam'" :content="'Time At the vu.'" :image="'VU.jpg'" :index="2" />
  </div>
 </template>
