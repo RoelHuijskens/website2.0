@@ -36,21 +36,22 @@ export default {
 
 <style scoped>
 .card-format{
-  width:40%;
-  height:65%;
-  opacity:0.5;
+  width:30%;
+  height:80%;
+  background-color: white;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  border-radius: 10px;
 }
 .card-holder-left{
-  justify-content: left;
+  justify-content: flex-start;
 }
 .card-holder-right{
-  justify-content: right;
+  justify-content: flex-end;
 }
 
 .card-holder{
   padding: 6rem 4rem;
   display: flex;
-  justify-content: flex-end;
 }
 
 .section-holder{
@@ -58,6 +59,7 @@ export default {
 }
 .picture-holder{
   background-size:cover;
+  background-position: center;
   width:100vw;
   height:75vh;
   min-height: 500px;
