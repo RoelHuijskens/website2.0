@@ -24,6 +24,7 @@ export default {
   methods: {
     async addMessage(message, sender){
       this.messages.push({message: message, sender: sender})
+      await new Promise(r => setTimeout(r, 1000));
       this.messages.push({message: {'questionText':'thinking...'}, sender: 'bot'})
       this.questionText = ''
       await new Promise(r => setTimeout(r, 12000));
@@ -70,9 +71,6 @@ export default {
   100% {bottom: 0}
 }
 
-
-
-
 .thinking-animation{
   position: relative;
   display: inline-block;
@@ -80,6 +78,17 @@ export default {
   animation-duration: 2s;
   animation-iteration-count: infinite;
 }
+
+@keyframes fly-in-message-left{
+  0%   {bottom: -15rem; left: -1rem}
+  100% {bottom:0; left:0}
+}
+
+@keyframes fly-in-message-right{
+  0%   {bottom: -15rem; right: -1rem; opacity:0.3}
+  100% {bottom:0; right:0; opacity: 1;}
+}
+
 
 .question-holder{
     padding: 0.5rem 4rem;
@@ -120,13 +129,17 @@ export default {
     outline: none;
     box-shadow: rgba(225, 228, 232, 0.2) 0px 1px 0px 0px inset;
     min-width: 10rem;
+    animation-duration: 1s;
+    position:relative;
 }
 
 .user-message{
   background-color: bisque;
+  animation-name: fly-in-message-left;
 }
 .bot-message{
   background-color: lightblue;
+  animation-name: fly-in-message-right;
 }
 .chat-stream{
   width: 80%;
