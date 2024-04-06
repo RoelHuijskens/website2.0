@@ -56,14 +56,21 @@ export default {
 
 .section-holder{
   width:100vw;
+  justify-content: center;
+  padding: 3rem 0;
 }
 .picture-holder{
   background-size:cover;
   background-position: center;
-  width:100vw;
+  width:80vw;
   height:75vh;
   min-height: 500px;
-  justify-content: right;
+  margin: auto;
+  border-radius: 9px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  max-width:100rem;
+  min-width: 40rem;
+  max-height: 30 rem;
 }
 
 

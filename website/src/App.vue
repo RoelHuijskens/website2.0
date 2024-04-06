@@ -5,11 +5,10 @@ import AMA from './components/AMA.vue'
 
 <template>
   <div class="app-holder">
-  <AMA :image"'me.jpg'"/>
+  <AMA :image="'me.jpg'"/>
   <LifeStage :title="'APG AM'" :content="'Time At APG Asset Management.'" :image="'apg.jpg'" :index="1" />
   <LifeStage :title="'Utrecht University'" :content="'Time At the UU'" :image="'UU.jpg'" :index="2" />
   <LifeStage :title="'Vrije Universiteit Amsterdam'" :content="'Time At the vu.'" :image="'VU.jpg'" :index="3" />
-
  </div>
 </template>
 
