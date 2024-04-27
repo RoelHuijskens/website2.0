@@ -3,6 +3,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from llama_index.core import Settings
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 import uvicorn
 import os
 from pydantic import BaseModel
@@ -29,7 +33,6 @@ class UserInput(BaseModel):
 
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Document
 from llama_index.core import PromptTemplate
-from llama_index.readers.web import SimpleWebPageReader
 from llama_index.llms.openai import OpenAI
 
 
