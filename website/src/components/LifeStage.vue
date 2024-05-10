@@ -1,3 +1,4 @@
+
 <script>
 export default {
   props:['title','content','image', 'index'],
@@ -27,7 +28,7 @@ export default {
         <div v-bind:class="{'card-holder':true, 'card-holder-left':allign_content_left, 'card-holder-right':!allign_content_left}">
       <div class="card-format">
         <h1>{{title}}</h1>
-        <p>{{content}}</p>
+        <p >{{content}}</p>
       </div>
     </div>
   </div>
@@ -41,6 +42,7 @@ export default {
   background-color: white;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   border-radius: 10px;
+  padding: 0 2rem;
 }
 .card-holder-left{
   justify-content: flex-start;
@@ -55,7 +57,7 @@ export default {
 }
 
 .section-holder{
-  width:100vw;
+  width:100%;
   justify-content: center;
   padding: 3rem 0;
 }
