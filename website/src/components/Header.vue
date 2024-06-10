@@ -46,6 +46,8 @@ export default {
     100%{opacity: 0;}
     
 }
+
+
 #prompt-start {
     margin: 0 0.3rem;
     

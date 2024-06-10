@@ -54,15 +54,24 @@ export default {
          <div class="chat-stream">
            <div class="chat-messages" > 
             <div class="question-holder question-holder-left">
-                <div class="chat-message bot-message" id="initial-message"><Header/></div>
+              <div id="initial-message-holder">
+              <img id="profile-picture-icon-initial" src="https://raw.githubusercontent.com/RoelHuijskens/Website2.0/master/website/src/assets/imgs/me.jpg">
+              <div class="header"></div> <div class="chat-message bot-message" id="initial-message">
+                <img id="profile-picture-portrait" src="https://raw.githubusercontent.com/RoelHuijskens/Website2.0/master/website/src/assets/imgs/me.jpg">
+                <Header/>
+              </div>
+                </div>
             </div>
           <template v-for="message in messages">
                <div v-bind:class="{'question-holder':true, 'question-holder-left':message.sender=='bot', 'question-holder-right':message.sender=='user'}">
+                <template v-if="message.sender=='bot'">
+                    <img id="profile-picture-icon" src="https://raw.githubusercontent.com/RoelHuijskens/Website2.0/master/website/src/assets/imgs/me.jpg">
+                  </template> 
                 <template v-if="message.sender=='bot'&&message.message.questionText=='thinking...'">
                   <div class="chat-message bot-message"><div class="thinking-animation" >.</div><div class="thinking-animation" style="animation-delay:0.1s">.</div><div class="thinking-animation" style="animation-delay:0.2s">.</div></div>
                 </template>
                 <template v-else>
-                <img src="https://raw.githubusercontent.com/RoelHuijskens/Website2.0/master/website/src/assets/imgs/me.jpg"> <div v-bind:class="{'chat-message':true, 'bot-message':message.sender=='bot', 'user-message':message.sender=='user'}">{{ message.message.questionText }}</div>
+                <div v-bind:class="{'chat-message':true, 'bot-message':message.sender=='bot', 'user-message':message.sender=='user'}">{{ message.message.questionText }}</div>
                 </template>
               </div> 
             </template>
@@ -129,6 +138,7 @@ export default {
   font-family: monospace;
   font-size: 1.2rem;
 }
+
 .chat-messages{
     width: 100%;
     height: 80%;
@@ -152,8 +162,8 @@ export default {
     max-width: 30rem;
     animation-duration: 1s;
     position:relative;
-    
 }
+
 
 .user-message{
   background-color: gray;
@@ -173,6 +183,74 @@ export default {
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   position:relative;
 }
+
+#profile-picture-icon-initial{
+  width: 4rem;
+  max-width: 25rem;
+  height: 4rem;
+  max-height: 25rem;
+  border-radius: 50%;
+  margin: 0.5rem 0.5rem;
+  animation-name: profile-picture-animation-appear;
+  animation-duration: 10s;
+}
+
+#profile-picture-icon{
+  width: 4rem;
+  max-width: 25rem;
+  height: 4rem;
+  max-height: 25rem;
+  border-radius: 50%;
+  margin: 0.5rem 0.5rem;
+}
+
+#profile-picture-portrait{
+  opacity: 0;
+  width: 0;
+  max-width: 25rem;
+  height: 0;
+  max-height: 25rem;
+  border-radius: 50%;
+  margin: 0 auto;
+  animation-name: profile-picture-animation-disappear;
+  animation-duration: 9s;
+}
+
+
+@keyframes profile-picture-animation-appear{
+  0% {
+    opacity: 0;
+  }
+  90% {opacity: 0;
+  }
+  100% {
+  }
+  
+}
+
+@keyframes profile-picture-animation-disappear{
+  0% {opacity: 1;
+    width: 15vw;
+    height: 15vw;
+  }
+  
+  80% {opacity: 1;
+    width: 15vw;
+    height: 15vw;
+  }
+
+  90% {opacity: 0;
+    width: 15vw;
+    height: 15vw;
+  }
+  100% {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+}
+
 
 #input-prompt{
     padding: 0.5rem 2rem;
@@ -261,41 +339,75 @@ export default {
 #initial-message{
   background-color: rgba(255,255,255,1);
   border-width:0;
-  color:black;
-  box-shadow: rgba(225, 228, 232, 0.2) 0px 1px 0px 0px inset;
   position: relative;
   bottom: 0;
-  margin: 0 0;
+  color:black;
+  box-shadow: rgba(225, 228, 232, 0.2) 0px 1px 0px 0px inset;
+  margin: 0 auto;
   width: 100%;
   font-size: 1rem;
   height: 3.5rem;
-  animation-name: initial-message-animation;
-  animation-duration: 8s;
+  animation-name: initial-message-color-animation, initial-message-animation;
+  animation-duration: 10s;
+  display: flex;
+  flex-direction: column;
 }
 
-@keyframes initial-message-animation{
+#initial-message-holder{
+  display: flex;
+  flex-direction: row;
+  width: 40rem;
+  animation-name: initial-message-holder-shrink;
+  animation-duration: 10s;
+}
+
+@keyframes initial-message-color-animation{
   0% {
     background-color: rgba(0,0,0,0);
     color:white;
     box-shadow: 0 0 0;
-    bottom: -30vh;
-    margin: 0 20vw;
   }
   90% {
     background-color: rgba(0,0,0,0);
     color:white;
     box-shadow: 0 0 0;
-    bottom: -30vh;
-    margin: 0 20vw;
   }
   100% {
     background-color: rgba(255,255,255,1);
     color:black;
     box-shadow: rgba(225, 228, 232, 0.2) 0px 1px 0px 0px inset;
+  }
+
+}
+
+
+@keyframes initial-message-animation{
+  0% {
+    flex-direction: column;
+    bottom: -25vh;
+  }
+  80% {
+    flex-direction: column;
+    bottom: -25vh;
+  }
+  100% {
+    flex-direction: row;
     bottom: 0;
-    margin: 0 0;
   }
 }
+
+@keyframes initial-message-holder-shrink{
+  0% {
+    width: 100%;
+  }
+  83% {
+    width: 100%;
+  }
+  100% {
+    width: 40rem;
+  }
+}
+
 
 .video-background {
   position: absolute;
@@ -304,6 +416,7 @@ export default {
   height: 100vh;
 
   iframe {
+    animation: background-fade-in 7s;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -321,5 +434,17 @@ export default {
   }
 }
 
+
+@keyframes background-fade-in {
+  0% {
+    background-color: rgb(0, 0, 0);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    background-color: rgba(0,0,0,);
+  }
+  
+}
 
 </style>

@@ -13,9 +13,9 @@ import AMA from './components/AMA.vue'
   <Header/>
   <AMA :image="'me.jpg'"/>
   <div id="padding"/>
-  <LifeStage :title="'APG AM'" :content="'I am currently working at APG Asset Management as a devops engineer in the Self Service & Data Science team. Here i support our business with data analytics tooling such as posit, R, Python.'" :image="'apg.jpg'" :index="1" />
+  <LifeStage :title="'APG AM'" :content="'I am currently working at APG Asset Management as a devops engineer in the Self Service & Data Science team. Here i support our business with data analytics tooling such as Posit, R, Python.'" :image="'apg.jpg'" :index="1" />
   <LifeStage :title="'Utrecht University'" :content="'I have completed my Masters degree in Applied Statistics at the Utrecht University. Providing met with a strong data foundation and analytical skills, and completed my thesis at Statistics Netherlands.'" :image="'UU.jpg'" :index="2" />
-  <LifeStage :title="'Vrije Universiteit Amsterdam'" :content="'I did my bachelor studies in pyschology at the Vrije universiteit Amsterdam, i initially chose psychology due to my interest in neuro science. Along the way i got hooked by statistics and programming. '" :image="'VU.jpg'" :index="3" />
+  <LifeStage :title="'Vrije Universiteit Amsterdam'" :content="'I did my bachelor studies in pyschology at the Vrije universiteit Amsterdam, I initially chose psychology due to my interest in neuroscience. Along the way i got hooked by statistics and programming. '" :image="'VU.jpg'" :index="3" />
  </div>
 </template>
 
