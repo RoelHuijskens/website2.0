@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "vite": "^5.2.7",
+    "vue-scrollto": "^2.20.0"
+  }
+}
