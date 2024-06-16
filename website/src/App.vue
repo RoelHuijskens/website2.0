@@ -12,9 +12,9 @@ import Logo from './components/Logo.vue'
   <div class="app-holder">
   <Logo/>
   <AMA :image="'me.jpg'"/>
-  <LifeStage :title="'APG AM'" :content="'I am currently working at APG Asset Management as a devops engineer in the Self Service & Data Science team. Here i support our business with data analytics tooling such as Posit, R, Python.'" :image="'apg.jpg'" :index="1" />
-  <LifeStage :title="'Utrecht University'" :content="'I have completed my Masters degree in Applied Statistics at the Utrecht University. Providing met with a strong data foundation and analytical skills, and completed my thesis at Statistics Netherlands.'" :image="'UU.jpg'" :index="2" />
-  <LifeStage :title="'Vrije Universiteit Amsterdam'" :content="'I did my bachelor studies in pyschology at the Vrije universiteit Amsterdam, I initially chose psychology due to my interest in neuroscience. Along the way i got hooked by statistics and programming. '" :image="'VU.jpg'" :index="3" />
+  <LifeStage :title="'APG AM'" :content="'I am currently working at APG Asset Management as a devops engineer in the Self Service & Data Science team. Here I support our business with data analytics tooling such as Posit, R, Python.'" :tag="'APG'" :index="1" />
+  <LifeStage :title="'Utrecht University'" :content="'I have completed my Masters degree in Applied Statistics at the Utrecht University. Providing met with a strong data foundation and analytical skills, and completed my thesis at Statistics Netherlands.'" :tag="'UU'" :index="2" />
+  <LifeStage :title="'Vrije Universiteit Amsterdam'" :content="'I did my bachelor studies in pyschology at the Vrije universiteit Amsterdam, I initially chose psychology due to my interest in neuroscience. Along the way i got hooked by statistics and programming. '" :tag="'VU'" :index="3" />
  </div>
 </template>
 
@@ -52,7 +52,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  background: light-grey;        /* color of the tracking area */
+  background: rgb(0,0,0,0)        /* color of the tracking area */
 }
 
 body::-webkit-scrollbar-thumb {
@@ -60,6 +60,23 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px;       /* roundness of the scroll thumb */
   border: 3px solid white;  /* creates padding around scroll thumb */
 }
+
+
+div::-webkit-scrollbar {
+  width: 15px;               /* width of the entire scrollbar */
+}
+
+div::-webkit-scrollbar-track {
+  background: rgb(0,0,0,0)        /* color of the tracking area */
+}
+
+div::-webkit-scrollbar-thumb {
+  background-color: black;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid white;  /* creates padding around scroll thumb */
+}
+
+
 
 </style>
 

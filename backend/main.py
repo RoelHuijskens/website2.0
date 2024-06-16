@@ -1,7 +1,6 @@
 import yaml
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from llama_index.core import Settings
 
 from dotenv import load_dotenv
 
@@ -60,7 +59,6 @@ prompt_template = PromptTemplate("""
 """)
 
 query_engine.update_prompts({"response_synthesizer:text_qa_template":prompt_template})
-print(query_engine.get_prompts().keys())
 app = FastAPI()
 origins = [
     "http://127.0.0.1:5173",
