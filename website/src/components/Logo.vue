@@ -7,29 +7,39 @@
 </template>
 
 <script>
-    export default {
 
+export default {
+
+    mounted() {
+    window.addEventListener("scroll", this.onScroll)
+    },
+    beforeDestroy() {
+    window.removeEventListener("scroll", this.onScroll)
+    },
     methods: {
-        scroll_to_card(id) {
-        console.log("Scrolling to card with label:", id)
-        // Assuming each life stage element has an id corresponding to its label
-        const elementId = `#${id}`;
-        const element = document.querySelector(elementId);
-
-        if (element) {
-        // Scroll to the element
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    onScroll(e) {
+        this.windowTop = window.top.scrollY /* or: e.target.documentElement.scrollTop */
+        if (this.windowTop > 900) {
+            console.log("showing logo")
+            document.querySelector(".logo-holder").style.visibility = "visible"
+        } else {
+            console.log("hiding logo")
+            document.querySelector(".logo-holder").style.visibility = "hidden"
         }
+    
     }
-    }
+
 }
+}
+
 </script>
 
 
 <style>
 .logo-holder {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    visibility: hidden;
 }
 
 .logo {
@@ -37,11 +47,10 @@
     padding: 1.5em;
     position: fixed;
     top: 0;
-    width: 20vw;
+    width: 100vw;
     z-index: 10;
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 5px 5px gray;
-    border-radius: 0 0 12px 12px;
     transition: 0.3s;
     animation: logo-holder-fade-in 9s;
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="card-holder-left card-holder">
-    <div class="card-format card-appear" :style="{animationDuration: '1s'}">
+    <div class="card-format card-appear" id="card-initial" :style="{animationDuration: '1s'}">
         <h1>Vu University</h1>
         <h3>2015-2018</h3>
         <p>

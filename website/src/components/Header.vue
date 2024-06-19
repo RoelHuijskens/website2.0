@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div  @click="scroll_to_card('my-info-holder')" class="header">
         <p class="typing-text">{{ typedText }}</p><span id="prompt-cursor"></span>
     </div>
 </template>
@@ -9,8 +9,8 @@ export default {
     data() {
         return {
             typedText: "",
-            fullText: "Roel Huijskens, software, devops and data engineer... ask me anything.",
-            typingSpeed: 100, // Adjust the typing speed (in milliseconds) here
+            fullText: "Roel Huijskens, software, devops and data engineer. Ask me anything or click here for more info about me.",
+            typingSpeed: 70, // Adjust the typing speed (in milliseconds) here
         };
     },
     mounted() {
@@ -32,6 +32,25 @@ export default {
             console.log("delaying this bitch")
             return new Promise((resolve) => setTimeout(resolve, 2000));
         },
+
+
+
+        scroll_to_card(id) {
+        console.log("Scrolling to card with label:", id)
+        // Assuming each life stage element has an id corresponding to its label
+        const elementId = `#${id}`;
+        const element = document.querySelector(elementId);
+
+        if (element) {
+        // Scroll to the element
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+
+}
+
+
+
     },
 };
 </script>

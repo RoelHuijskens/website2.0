@@ -102,16 +102,13 @@ export default {
   display: flex;
 }
 
-.card-format:hover{
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px;
-}
 
 .life-section-holder{
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 3rem 0;
   position: relative;
+
 }
 
 .life-section-holder-full-view{
@@ -136,8 +133,13 @@ export default {
   }
 } 
 
+#card-initial{
+  margin-top: 0;
+}
+
 .card-appear{
   animation-name: full-view-card-appereance;
+  margin-top: -10rem;
 }
 
 @keyframes full-view-card-appereance {
@@ -167,18 +169,29 @@ export default {
 }
 
 .life-picture-holder{
-  background-size:cover;
+  background-attachment: fixed;
   background-position: center;
-  width:80vw;
-  height:75vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width:50vw;
+  height:55vh;
   min-height: 500px;
-  margin: auto;
+  margin: -3rem auto;
   border-radius: 9px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  max-width:100rem;
+  max-width:80rem;
   min-width: 40rem;
-  max-height: 30 rem;
+  max-height: 50rem;
+  position: relative;
+  top: 0;
+  transition: top ease 0.3s;
 }
+
+
+.life-picture-holder:hover {
+  top: -1rem;
+}
+
 
 .life-picture-holder-full-view{
   width: 80%;

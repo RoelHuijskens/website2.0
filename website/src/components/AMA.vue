@@ -1,6 +1,7 @@
 
 <script setup>
 import Header from './Header.vue'
+import Logo from './Logo.vue'
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 </script>
@@ -42,12 +43,17 @@ export default {
         this.messages)
       } catch (error){
         console.log(error)
-        response = {data: {"questionText":"I'm sorry, I'm not able to answer that question at the moment. Please try again later."}}
+        response = {
+          data: {
+            message:{
+              questionText:"I'm sorry, I'm not able to answer that question at the moment. Please try again later."
+            }
+          }
+        }
       }
-      console.log(response.data)
       this.messages.pop()
-      this.messages.push({message: response.data, sender: 'bot'})
-  
+      response.data.sender = 'bot'
+      this.messages.push(response.data)
     }
   },
 
@@ -167,6 +173,7 @@ export default {
     padding: 10px;
     overflow-y: auto;
 }
+
 .chat-message{
     padding: 1.5rem 2rem;
     line-height: 20px;
@@ -183,6 +190,7 @@ export default {
     max-width: 30rem;
     animation-duration: 1s;
     position:relative;
+    text-align: left;
 
 }
 
@@ -209,13 +217,13 @@ export default {
   border-radius: 10px;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   position:relative;
-  animation: chat-stream-shadow-animation 10s;
+  animation: chat-stream-shadow-animation 11s;
   padding: 2rem 1rem;
 }
 
 @keyframes chat-stream-shadow-animation{
   0% {box-shadow: rgb(38, 57, 77) 0 0 0 0;}
-  50% {box-shadow: rgb(38, 57, 77) 0 0 0 0;}
+  95% {box-shadow: rgb(38, 57, 77) 0 0 0 0;}
   100% {box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;}  
 }
 
@@ -369,7 +377,14 @@ export default {
   justify-content: space-evenly;
   animation-name:  initial-message-animation;
   animation-duration: v-bind("startup_animation_duration");
+  transition: bottom ease 0.3s;
 }
+
+
+#initial-message:hover {
+  bottom: 0.5rem;
+}
+
 
 #initial-message-text{
   animation-name:  initial-message-color-animation;
