@@ -46,7 +46,6 @@ documents = []
 for info in my_info['info']:
     documents.append(Document(doc_id=info['title'], text=info['text']))
 
-print(documents)
 index = VectorStoreIndex.from_documents(documents)
 query_engine = index.as_query_engine(similarity_top_k=5,similarity=0.6, llm=gpt4)
 
