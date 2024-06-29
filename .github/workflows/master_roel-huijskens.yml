@@ -47,4 +47,4 @@ jobs:
         app-name: 'roel-huijskens'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_7dce60abcf4a4edaa048dd3a8468da69 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_3a3e9878aec344f681d599debbdc0d64 }}/deroelh/personal-website:${{ github.sha }}'
+        images: 'index.docker.io/deroelh/personal-website:${{ github.sha }}'
