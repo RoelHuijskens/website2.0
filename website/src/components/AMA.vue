@@ -39,7 +39,7 @@ export default {
 
       try{
         response = await axios.post(
-        "http://127.0.0.1:8000/chat", 
+        import.meta.env.VITE_BACKEND_URL + '/chat', 
         this.messages)
       } catch (error){
         console.log(error)

@@ -52,7 +52,7 @@ export default {
 </script>
 
 <template>
-  <div class="life-section-holder" @click="set_full_view" :class="{ section_holder_full_view: full_view }" :id="this.id">
+  <div class="life-section-holder" @click="set_full_view" :class="{ section_holder_full_view: full_view }" >
     <!-- <div v-bind:class="" :style="imgDivStyle"> -->
       <div v-bind:class="{'life-picture-holder': true}" :style="imgDivStyle">
         <div v-bind:class="{'card-holder':true, 'card-holder-left':allign_content_left, 'card-holder-right':!allign_content_left}">
@@ -69,6 +69,7 @@ export default {
       <p>{{ infoText[tag] }}</p>
     </div>
   </div>
+  
 </template>
 
 <style>

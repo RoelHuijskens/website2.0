@@ -2,12 +2,8 @@ import yaml
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from dotenv import load_dotenv
-
-load_dotenv()
 
 import uvicorn
-import os
 from pydantic import BaseModel
 from typing import List
 from fastapi.staticfiles import StaticFiles
@@ -75,14 +71,16 @@ app.add_middleware(
 @app.post("/chat")
 def chat(questions: List[UserInput]):
     # Use LlamaIndex to answer the user's question
-    answer = query_engine.query(questions[-2].message.questionText)
-    return UserInput(
-        message=Message(questionText=str(answer)),
-        sender="bot"
-    )
+    try:
+        answer = query_engine.query(questions[-2].message.questionText)
+        return UserInput(
+            message=Message(questionText=str(answer)),
+            sender="bot"
+        )
+    except Exception as e:
+        logging.info("Oh oh")
+        logging.error(f"Failed to sent request to open ai with: {e}")
 
-    #
-    # return {"answer": answer}
 
 @app.post("/load_data")
 def load_data():
