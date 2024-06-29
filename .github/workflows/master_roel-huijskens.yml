@@ -29,7 +29,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_3a3e9878aec344f681d599debbdc0d64 }}/deroelh/personal-website:${{ github.sha }}
+        tags: index.docker.io/deroelh/personal-website:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
