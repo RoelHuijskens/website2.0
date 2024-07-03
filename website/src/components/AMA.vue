@@ -63,21 +63,21 @@ export default {
 </script>
 
 <template>
-  <div class="section-holder">
+  <div class=section-holder>
     <!-- <div v-bind:class="" :style="imgDivStyle"> -->
-      <div class="video-background">
-      <iframe id="ytplayer" class="picture-holder" type="text/html" width="720" height="405" src="https://www.youtube.com/embed/mqf8SdcFo9s?autoplay=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&mute=1&iv_load_policy=3&playlist=mqf8SdcFo9s" frameborder="0">
+      <div class=video-background>
+      <iframe id=ytplayer class="picture-holder" type="text/html"  src="https://www.youtube.com/embed/mqf8SdcFo9s?autoplay=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&mute=1&iv_load_policy=3&playlist=mqf8SdcFo9s" frameborder="0">
         </iframe>
       </div>
-        <div id="video-fade-in">
-        <div class="chat-holder">
-         <div class="chat-stream">
-           <div class="chat-messages" > 
-            <div class="question-holder question-holder-left">
-              <div id="initial-message-holder">
-              <div class="header"></div> <div id="initial-message">
-                <img id="profile-picture-icon-initial" src="https://raw.githubusercontent.com/RoelHuijskens/Website2.0/master/website/src/assets/imgs/me.jpg">
-                <div class="chat-message bot-message" id="initial-message-text">
+        <div id=video-fade-in>
+        <div class=chat-holder>
+         <div class=chat-stream>
+           <div class=chat-messages > 
+            <div class=question-holder question-holder-left>
+              <div id=initial-message-holder>
+              <div class=header></div> <div id=initial-message>
+                <img id=profile-picture-icon-initial src="https://raw.githubusercontent.com/RoelHuijskens/Website2.0/master/website/src/assets/imgs/me.jpg">
+                <div class=chat-message bot-message id=initial-message-text>
                 <Header/>
                 </div>
               </div>
@@ -476,11 +476,13 @@ export default {
     transform: translate(-50%, -50%);
     border-radius: 0 0 12px 12px;
 
-    @media (min-aspect-ratio: 16/9) {
-      height: 56.25vw
+    
+
+    @media (-webkit-min-aspect-ratio: 16/9), (min-aspect-ratio: 16/9){
+        height: 56.25vw
     }
 
-    @media (max-aspect-ratio: 16/9) {
+    @media (-webkit-min-aspect-ratio: 16/9), (max-aspect-ratio: 16/9) {
       width: 177.78vh
     }
   }

@@ -14,7 +14,7 @@ import Connector from './components/lifestage_info/timeline_Connecter.vue'
   <AMA :image="'me.jpg'"/>
   <Me/>
   <Connector position="start" text="2021-Now"></Connector>
-  <LifeStage :title="'APG AM'" :content="'I am currently working at APG Asset Management as a devops engineer in the Self Service & Data Science team. Here I support our business with data analytics tooling such as Posit, R, Python.'" :tag="'APG'" :index="1" />
+  <LifeStage :title="'APG Asset Management'" :content="'I am currently working at APG Asset Management as a devops engineer in the Self Service & Data Science team. Here I support our business with data analytics tooling such as Posit, R, Python.'" :tag="'APG'" :index="1" />
   <Connector position="" text="2018-2020"></Connector>
   <LifeStage :title="'Utrecht University'" :content="'I have completed my Masters degree in Applied Statistics at the Utrecht University. Providing met with a strong data foundation and analytical skills, and completed my thesis at Statistics Netherlands.'" :tag="'UU'" :index="2" />
   <Connector position="" text="2015-2018"></Connector>
@@ -26,7 +26,7 @@ import Connector from './components/lifestage_info/timeline_Connecter.vue'
 <style>
 
 * {
-  font-family: 'Roboto', Times, sans-serif;
+  font-family: 'Code Next', Verdana, sans-serif;
 }
 
 #app {

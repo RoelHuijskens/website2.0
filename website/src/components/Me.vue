@@ -39,13 +39,16 @@ export default {
         flex-direction: column;
         width: 100vw;
         height: 50vh;
+        margin: 10rem 0;
     }
 
     #my-info {
-        padding: 2em;
-        margin: 2em;
+        padding: 4rem;
+        margin:4rem;
         width:40vw;
         text-align: left;
+        min-height: 25rem;
+        min-width: 35rem;
     }
 
 </style>

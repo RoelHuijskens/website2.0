@@ -57,8 +57,10 @@ export default {
       <div v-bind:class="{'life-picture-holder': true}" :style="imgDivStyle">
         <div v-bind:class="{'card-holder':true, 'card-holder-left':allign_content_left, 'card-holder-right':!allign_content_left}">
       <div class="card-format">
-        <h1>{{title}}</h1>
-        <p >{{content}}</p>
+        <div class="title-card-holder">
+          <h2 style="max-width:20rem">{{title}}</h2>
+          </div>
+        <p >{{content}}</p><u>More</u>
       </div>
     </div>
   </div>
@@ -74,14 +76,15 @@ export default {
 
 <style>
 .card-format{
-  width:30%;
+  width:40%;
   height:120%;
   background-color: white;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   border-radius: 10px;
-  padding: 0 2rem;
+  padding: 2rem 2rem;
   position: relative;
   text-align: left;
+  opacity: 0.95;
 }
 
 
@@ -99,8 +102,9 @@ export default {
 }
 
 .card-holder{
-  padding: 2rem 6rem;
+  padding: 5rem 6rem;
   display: flex;
+  min-width: 40rem;
 }
 
 
@@ -109,7 +113,7 @@ export default {
   display: flex;
   justify-content: center;
   position: relative;
-
+  font-size: 1rem;
 }
 
 .life-section-holder-full-view{
@@ -174,14 +178,14 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width:50vw;
-  height:55vh;
+  width:60vw;
+  height:75vh;
   min-height: 500px;
   margin: -3rem auto;
   border-radius: 9px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  max-width:80rem;
-  min-width: 40rem;
+  max-width:100rem;
+  min-width: 70rem;
   max-height: 50rem;
   position: relative;
   top: 0;
@@ -202,6 +206,15 @@ export default {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   overflow-y: scroll;
   padding: 4rem 0;
+}
+
+.title-card-holder{
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.title-card-holder-full{
+  text-align: center;
 }
 
 </style>

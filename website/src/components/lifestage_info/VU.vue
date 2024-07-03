@@ -1,7 +1,7 @@
 <template>
     <div class="card-holder-left card-holder">
     <div class="card-format card-appear" id="card-initial" :style="{animationDuration: '1s'}">
-        <h1>Vu University</h1>
+        <h1 class="title-card-holder-full">Vu University</h1>
         <h3>2015-2018</h3>
         <p>
             During High School, I developed a strong interest in the inner workings of the human brain during my biology classes.
@@ -13,7 +13,7 @@
 
     <div class="card-holder-right card-holder">
     <div class="card-format card-appear" :style="{animationDuration: '1.5s'}">
-        <h2>Courses</h2>
+        <h2 class="title-card-holder-full">Courses</h2>
         <p>
            The courses I valued most during my studies were:
            <ul>
@@ -30,7 +30,7 @@
 
     <div class="card-holder-left card-holder">
     <div class="card-format card-appear" :style="{animationDuration: '2s'}">
-        <h2>Thesis</h2>
+        <h2 class="title-card-holder-full">Thesis</h2>
         <p>
            During my third year, I chose the Brain and Genestics track, this track has a strong focus on quantitative research methods in the field of behavioural genetics and neuroscience.
            My interest primarily lay with behavioural genetics (research field focussing on the role of genetics in behaviour) and I wrote my thesis at the vue biological psychology department.

@@ -1,7 +1,7 @@
 <template>
     <div class="card-holder-left card-holder">
     <div class="card-format card-appear" id="card-initial" :style="{animationDuration: '1s'}">
-        <h1>APG Asset Management</h1>
+        <h1 class="title-card-holder-full">APG Asset Management</h1>
         <h3>2021-now</h3>
         <p>
             After my studies I started working as a Devops engineer at APG Asset Management.
@@ -15,7 +15,7 @@
 
     <div class="card-holder-right card-holder">
     <div class="card-format card-appear" :style="{animationDuration: '1.5s'}">
-        <h2>Skills/Tools used</h2>
+        <h2 class="title-card-holder-full">Skills/Tools used</h2>
         <p>
            In my role at APG, I have worked with a variety of tools and technologies, some of which are:
            <ul>
@@ -40,7 +40,7 @@
 
     <div class="card-holder-left card-holder">
     <div class="card-format card-appear" :style="{animationDuration: '2s'}">
-        <h2>Projects</h2>
+        <h2 class="title-card-holder-full">Projects</h2>
         <p>
             I have worked on several projects during my time at apg, some of which are:
 

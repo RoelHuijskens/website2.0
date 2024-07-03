@@ -56,7 +56,7 @@ export default {
         display: flex;
         justify-content: center;
         flex-direction: column;
-        height: 30vh;
+        height: 50vh;
     }
 
 
