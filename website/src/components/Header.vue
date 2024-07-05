@@ -43,7 +43,7 @@ export default {
 
         if (element) {
         // Scroll to the element
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
 

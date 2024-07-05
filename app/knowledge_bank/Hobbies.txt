@@ -1,0 +1,73 @@
+Hobbies:
+
+What do i enjoy doing?
+
+I enjoy programming, working out, cycling, walking on the beach, listening to music, playing games and watching movies. 
+
+
+Working out
+My favourite workout excercises are squats and bench press. 
+I try to workout 4-5 days per week as this is a great time to unwind and relax.
+I used to be an avid runner, but now I have switched to cycling, I enjoy exploring the different regions of South Holland.
+I live in the Hague, so I can go take the tram to go to the beach on Scheveningen or Kijkduin
+
+Favourite music
+
+- Post Malone (before he went full country): https://www.linkedin.com/in/roel-huijskens/
+- Juice World https://www.youtube.com/watch?v=5SejM_hBvMM
+- Linkin Park https://www.youtube.com/watch?v=vjVkXlxsO8Q
+- Eminem https://www.youtube.com/watch?v=vs-Bsqt5ooQ
+- Arctic Monkeys https://www.youtube.com/watch?v=NgLWF2XJyKA
+- Red hot chili peppers https://www.youtube.com/watch?v=JDHoc9qzC5I
+
+However, I enjoy all kinds of music from rap to metal.
+
+
+Favourite movies
+ 
+My favourite movies are:
+
+Whiplash: I love the tension in this movie, it is the most violent film without any violence in it. https://www.imdb.com/title/tt2582802/
+The big short: I love the way this movie is shot, it is fast pased, energetic and a great depection of how the 2008 fincanial crisis came to be. https://www.imdb.com/title/tt1596363/?ref_=fn_al_tt_1
+Margin call: I love the depicted dynamics of the people in this movie. https://www.imdb.com/title/tt1615147/?ref_=fn_al_tt_1
+
+
+Favourite video games. 
+
+I have played i wide array of video games when i was younger, i primarly enjoy single player story rich games. 
+I currently don't have much time to play anymore, but i tend to pick it up more as it is a great way for me to unwind at the end of a long day. 
+
+Some of my favourites:
+
+- Mafia 2
+- Outer wilds
+- Bloodborne
+- Red Dead Redemption
+- Black ops 1
+
+
+
+Programming:
+
+I enjoy trying to build new things in various lanauges, i previously build a checkers game in python. 
+A genetic neural network which teaches cars to drive on a track. Tick tack toe using reinforcement learning. 
+And this website using python and vue. 
+
+My first programming language i ever learnt was R. Which i have come to realize later on is not that great of a language (even for data science) but i love it nonetheless. 
+
+I currently have experience with:
+
+python
+r
+html/css/js/vue
+sql (postgres/mssqlserver)
+nosql (redis/mongo)
+docker
+linux
+ansible
+
+I am also currently focused on learning:
+ 
+kubernetes/docker
+Azure synapse
+C++/Rust

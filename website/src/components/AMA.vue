@@ -25,15 +25,15 @@ export default {
     }
   },
   methods: {
-    async addMessage(message, sender){
+    async addMessage(message, role){
       if (message.questionText == ''){
         console.log("Please ask a question... don't be shy!")
         return
       }
-      this.messages.push({message: message, sender: sender})
+      this.messages.push({content: message, role: role})
       this.questionText = ''
       await new Promise(r => setTimeout(r, 1000));
-      this.messages.push({message: {'questionText':'thinking...'}, sender: 'bot'})
+      this.messages.push({content: {'questionText':'thinking...'}, role: 'bot'})
 
       let response
 
@@ -52,7 +52,7 @@ export default {
         }
       }
       this.messages.pop()
-      response.data.sender = 'bot'
+      response.data.role = 'bot'
       this.messages.push(response.data)
     }
   },
@@ -66,7 +66,7 @@ export default {
   <div class=section-holder>
     <!-- <div v-bind:class="" :style="imgDivStyle"> -->
       <div class=video-background>
-      <iframe id=ytplayer class="picture-holder" type="text/html"  src="https://www.youtube.com/embed/mqf8SdcFo9s?autoplay=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&mute=1&iv_load_policy=3&playlist=mqf8SdcFo9s" frameborder="0">
+      <iframe id=ytplayer class="picture-holder" type="text/html"  src="https://www.youtube.com/embed/3Jn3UbF12fA?autoplay=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&mute=1&iv_load_policy=3&playlist=3Jn3UbF12fA" frameborder="0">
         </iframe>
       </div>
         <div id=video-fade-in>
@@ -84,15 +84,15 @@ export default {
                 </div>
             </div>
           <template v-for="message in messages">
-               <div v-bind:class="{'question-holder':true, 'question-holder-left':message.sender=='bot', 'question-holder-right':message.sender=='user'}">
-                <template v-if="message.sender=='bot'">
+               <div v-bind:class="{'question-holder':true, 'question-holder-left':message.role=='bot', 'question-holder-right':message.role=='user'}">
+                <template v-if="message.role=='bot'">
                     <img id="profile-picture-icon" src="https://raw.githubusercontent.com/RoelHuijskens/Website2.0/master/website/src/assets/imgs/me.jpg">
                   </template> 
-                <template v-if="message.sender=='bot'&&message.message.questionText=='thinking...'">
+                <template v-if="message.role=='bot'&&message.content.questionText=='thinking...'">
                   <div class="chat-message bot-message-anmimated"><div class="thinking-animation" >.</div><div class="thinking-animation" style="animation-delay:0.1s">.</div><div class="thinking-animation" style="animation-delay:0.2s">.</div></div>
                 </template>
                 <template v-else>
-                <div v-bind:class="{'chat-message':true, 'bot-message':message.sender=='bot', 'user-message':message.sender=='user'}">{{ message.message.questionText }}</div>
+                <div v-bind:class="{'chat-message':true, 'bot-message':message.role=='bot', 'user-message':message.role=='user'}">{{ message.content.questionText }}</div>
                 </template>
               </div> 
             </template>

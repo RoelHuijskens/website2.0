@@ -1,13 +1,17 @@
-import yaml
-from fastapi import FastAPI
+
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 
 
+
+
+
 import uvicorn
-from pydantic import BaseModel
 from typing import List
 from fastapi.staticfiles import StaticFiles
 
+
+from models import UserQuestion, UserInput
 
 import logging
 import sys
@@ -16,45 +20,12 @@ logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
 
 
-class Message(BaseModel):
-    questionText: str
+
+from dependencies import get_openai_interface, OpenaiInterface
 
 
-class UserInput(BaseModel):
-    message: Message
-    sender: str
-    
-
-
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Document
-from llama_index.core import PromptTemplate
-from llama_index.llms.openai import OpenAI
-
-
-# LLM (gpt-4)
-gpt4 = OpenAI(temperature=1, model="gpt-4")
-
-with open("./knowledge_bank/my_info.yml", 'r') as file:
-    my_info = yaml.safe_load(file)
-
-documents = []
-
-for info in my_info['info']:
-    documents.append(Document(doc_id=info['title'], text=info['text']))
-
-index = VectorStoreIndex.from_documents(documents)
-query_engine = index.as_query_engine(similarity_top_k=5,similarity=0.6, llm=gpt4)
-
-
-prompt_template = PromptTemplate("""
-    You are a bot called Roel Huijskens, the virtual counterpart of the Real Roel huijskens.
-    Using the following context: {context_str} give an answer to the question: {query_str} to the best of your ability.
-    If you are not sure about the answer, answer with I am not sure, would you like to ask the real Roel?
-    Be polite and enthusiastic in your response, try to respond in 3 to 4 sentences at most, shorter if possible.
-""")
-
-query_engine.update_prompts({"response_synthesizer:text_qa_template":prompt_template})
 app = FastAPI()
+
 origins = [
     "http://127.0.0.1:5173",
     "http://localhost:5173"
@@ -69,24 +40,16 @@ app.add_middleware(
 )
 
 @app.post("/chat")
-def chat(questions: List[UserInput]):
-    # Use LlamaIndex to answer the user's question
+def chat(questions: List[UserInput], interface: OpenaiInterface  = Depends(get_openai_interface)) -> UserInput:
     try:
-        answer = query_engine.query(questions[-2].message.questionText)
-        return UserInput(
-            message=Message(questionText=str(answer)),
-            sender="bot"
+        interface.submit_assistant_question(
+            chat_history=questions
         )
     except Exception as e:
         logging.info("Oh oh")
         logging.error(f"Failed to sent request to open ai with: {e}")
 
 
-@app.post("/load_data")
-def load_data():
-    # Reload the vector database and load data from directory and LinkedIn page
-    index.reload_data()
-    return {"message": "Data loaded successfully"}
 
 app.mount("/", StaticFiles(directory="frontend_dist",  html=True), name="static")
 
