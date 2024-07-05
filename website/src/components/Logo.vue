@@ -59,12 +59,12 @@ export default {
     width: 100vw;
     box-shadow: 0px 5px 5px gray;
     z-index: 10;
+    visibility: hidden;
 
 }
 
 .logo {
     padding: 1.5rem;
-    transition: 0.3s;
 }
 
 .links {
