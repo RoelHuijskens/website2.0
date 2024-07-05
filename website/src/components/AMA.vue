@@ -40,7 +40,7 @@ export default {
       try{
         response = await axios.post(
         import.meta.env.VITE_BACKEND_URL + '/chat', 
-        this.messages)
+        this.messages.slice(0, -1))
       } catch (error){
         console.log(error)
         response = {
@@ -357,13 +357,6 @@ export default {
 .section-holder{
   width:100%;
   background-color: BLACK;
-}
-.picture-holder{
-  background-size:cover;
-  background-position: center;
-  width:100%;
-  height:100vh;
-  min-height: 500px;
 }
 
 

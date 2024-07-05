@@ -16,10 +16,10 @@ from models import UserQuestion, UserInput
 import logging
 import sys
 
-logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
-logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
-
-
+#logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+# logging.getLogger(__name__).addHandler(logging.StreamHandler(stream=sys.stdout))
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.DEBUG,stream=sys.stdout )
 
 from dependencies import get_openai_interface, OpenaiInterface
 
@@ -42,12 +42,20 @@ app.add_middleware(
 @app.post("/chat")
 def chat(questions: List[UserInput], interface: OpenaiInterface  = Depends(get_openai_interface)) -> UserInput:
     try:
-        interface.submit_assistant_question(
+        
+        response = interface.submit_assistant_question(
             chat_history=questions
         )
+        if response:
+            return UserInput(
+                content=UserQuestion(
+                    questionText=response
+                ),
+                role="bot"
+            )
     except Exception as e:
-        logging.info("Oh oh")
-        logging.error(f"Failed to sent request to open ai with: {e}")
+        logger.info("Oh oh")
+        logger.error(f"Failed to sent request to open ai with: {e}")
 
 
 

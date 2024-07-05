@@ -33,8 +33,6 @@ export default {
       const image_path = 'https://raw.githubusercontent.com/RoelHuijskens/Website2.0/master/website/src/assets/imgs/' + this.tag + '.jpg'
       return {
         backgroundImage: `url(${image_path})`,
-        backgroundSize: 'cover', // Optional depending on your needs
-        backgroundRepeat: 'no-repeat', // Optional depending on your needs
       }
     }
   },
@@ -177,15 +175,15 @@ export default {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   width:60vw;
   height:75vh;
   min-height: 500px;
   margin: -3rem auto;
   border-radius: 9px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  max-width:100rem;
-  min-width: 70rem;
+  max-width:80rem;
+  min-width: 60rem;
   max-height: 50rem;
   position: relative;
   top: 0;
@@ -206,6 +204,7 @@ export default {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   overflow-y: scroll;
   padding: 4rem 0;
+  background-size: cover;
 }
 
 .title-card-holder{

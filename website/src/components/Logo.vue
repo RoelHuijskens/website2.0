@@ -5,7 +5,7 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 library.add(faLinkedin, faGithub)
-</script >
+</script>
 
 
 
