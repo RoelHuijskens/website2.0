@@ -26,6 +26,9 @@ jobs:
         cd website
         npm install
         npm run build
+        pwd
+        ls -lah ../app
+        ls -lah ../app/frontend_dist
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
