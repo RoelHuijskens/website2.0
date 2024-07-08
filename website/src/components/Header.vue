@@ -61,7 +61,6 @@ export default {
     align-items: center;
     justify-content: left;
     font-family: monospace;
-
 }
 
 @keyframes blinking{

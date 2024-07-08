@@ -11,10 +11,11 @@ library.add(faLinkedin, faGithub)
 
 <template>
     <div class="top-banner">
-        <span class="logo">
-            <p @click="scroll_to_card('utrecht-university')"> Thisis my logo</p>
+        <span class = "banner-item" style="color:white">placholder</span>
+        <span class = "banner-item">
+            <img class="logo" src="https://raw.githubusercontent.com/RoelHuijskens/Website2.0/master/website/src/assets/logo_blue.svg" title="RH"/>
         </span>
-        <span class="links">
+        <span class="links banner-item">
             <a href="https://www.linkedin.com/in/roel-huijskens/"><font-awesome-icon class="link" icon="fa-brands fa-linkedin" /></a>
             <a href="https://github.com/RoelHuijskens"><font-awesome-icon class="link" icon="fa-brands fa-github" /></a>
         </span>
@@ -58,32 +59,38 @@ export default {
     top: 0;
     width: 100vw;
     box-shadow: 0px 5px 5px gray;
-    z-index: 10;
+    z-index: 20;
     visibility: hidden;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
 
+.banner-item {
+    width: 15rem;
 }
 
 .logo {
-    padding: 1.5rem;
+    height: 7rem;
+    width: 7rem;
 }
 
 .links {
-    position:fixed;
     top:0;
     right: 0;
     z-index:20;
-    width: 10rem;
     display: flex;
     justify-content: space-around;
-    padding: 1.5rem;
-
+    margin: 2rem 2.5rem 2rem 0;
+    height:100%;
 }
 
 .link {
     transition: top ease 0.3s;
     position:relative;
-    width:2rem;
-    height:2rem;
+    width:3rem;
+    height:3rem;
+    color: #213547;
 }
 
 .link:hover {

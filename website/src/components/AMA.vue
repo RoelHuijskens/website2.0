@@ -183,7 +183,7 @@ export default {
     background-color: #ffffff;
     background-repeat: no-repeat;
     background-position: right 8px center;
-    border-radius: 10px;
+    border-radius: 20px;
     outline: none;
     box-shadow: 0px 5px 8px black;
     min-width: 10rem;
@@ -191,6 +191,7 @@ export default {
     animation-duration: 1s;
     position:relative;
     text-align: left;
+    margin: 0 0 0 1rem;
 
 }
 
@@ -286,20 +287,20 @@ export default {
 
 
 #input-prompt{
-    padding: 0.5rem 2rem;
+    padding: 1rem 3rem;
     margin: 0 0.5rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     line-height: 20px;
     color: #24292e;
     vertical-align: middle;
     background-color: #ffffff;
     background-repeat: no-repeat;
     background-position: right 8px center;
-    border-radius: 0 6px 6px 6px;
-    border: 2px solid black;
+    border-radius: 10px;
     box-shadow: 0px 5px 8px black;
     outline: none;
     width: 34rem;
+    height: 1rem;
     max-width: 45rem;
     min-width: 18rem;
     
@@ -363,7 +364,6 @@ export default {
 #initial-message{
   position: relative;
   bottom: 0;
-  margin: 0 auto;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -383,12 +383,10 @@ export default {
   animation-name:  initial-message-color-animation;
   animation-duration: v-bind("startup_animation_duration");
   font-size: 1rem;
-  width: 100%;
+  width: 90rem;
   height: 100%;
   padding: 0.2rem 2rem;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 #initial-message-holder{

@@ -40,6 +40,7 @@ export default {
         width: 100vw;
         height: 50vh;
         margin: 10rem 0;
+        font-size: 1.2rem;
     }
 
     #my-info {

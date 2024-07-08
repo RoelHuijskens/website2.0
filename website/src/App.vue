@@ -13,6 +13,8 @@ import Connector from './components/lifestage_info/timeline_Connecter.vue'
   <Logo/>
   <AMA :image="'me.jpg'"/>
   <Me/>
+  <div class="timeline-end"></div>
+  <div class="timeline-background">
   <Connector position="start" text="2021-Now"></Connector>
   <LifeStage :title="'APG Asset Management'" :content="'I am currently working at APG Asset Management as a devops engineer in the Self Service & Data Science team. Here I support our business with data analytics tooling such as Posit, R, Python.'" :tag="'APG'" :index="1" />
   <Connector position="" text="2018-2020"></Connector>
@@ -20,6 +22,9 @@ import Connector from './components/lifestage_info/timeline_Connecter.vue'
   <Connector position="" text="2015-2018"></Connector>
   <LifeStage :title="'Vrije Universiteit Amsterdam'" :content="'I did my bachelor studies in pyschology at the Vrije universiteit Amsterdam, I initially chose psychology due to my interest in neuroscience. Along the way i got hooked by statistics and programming. '" :tag="'VU'" :index="3" />
   <Connector position="end" text="1996-2015"></Connector>
+  <div class="timeline-filler"></div>  
+  </div>
+  <div class="timeline-end"></div>
  </div>
 </template>
 
@@ -39,6 +44,28 @@ import Connector from './components/lifestage_info/timeline_Connecter.vue'
   position:absolute;
   width:99.35vw;
   height:100vh;
+}
+
+.timeline-background {
+  background-color: #213547;
+  width: 3px;
+  margin: 0 auto;
+  padding: 5rem 0;
+  z-index: -14;
+}
+
+.timeline-end {
+  border-width: 3px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #213547;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0 auto;
+}
+
+.timeline-filler {
+  height: 50vh;
 }
 
 .logo:hover {

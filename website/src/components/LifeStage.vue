@@ -78,7 +78,7 @@ export default {
   height:120%;
   background-color: white;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 2rem 2rem;
   position: relative;
   text-align: left;
@@ -176,10 +176,10 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   width:60vw;
-  height:75vh;
+  height:60vh;
   min-height: 500px;
-  margin: -3rem;
-  border-radius: 9px;
+  margin: 15rem 0 -10rem 0;
+  border-radius: 20px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   max-width:80rem;
   min-width: 60rem;
@@ -187,6 +187,7 @@ export default {
   position: relative;
   top: 0;
   transition: top ease 0.3s;
+  z-index:10;
 }
 
 
