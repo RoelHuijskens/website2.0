@@ -39,7 +39,7 @@ export default {
         flex-direction: column;
         width: 100vw;
         height: 50vh;
-        margin: 10rem 0;
+        margin: 15rem 0;
         font-size: 1.2rem;
     }
 

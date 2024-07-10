@@ -55,8 +55,14 @@ def chat(questions: List[UserInput], interface: OpenaiInterface  = Depends(get_o
                 ),
                 role="bot"
             )
+        else:
+            return UserInput(
+                content=UserQuestion(
+                    questionText="Apologies something went wrong, please try again later."
+                ),
+                role="bot"
+            ) 
     except Exception as e:
-        logger.info("Oh oh")
         logger.error(f"Failed to sent request to open ai with: {e}")
 
 

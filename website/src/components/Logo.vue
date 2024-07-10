@@ -1,120 +1,71 @@
-<script setup>
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
-
-library.add(faLinkedin, faGithub)
-</script>
-
-
-
 <template>
-    <div class="top-banner">
-        <span class = "banner-item" style="color:white">placholder</span>
-        <span class = "banner-item">
-            <img class="logo" src="https://raw.githubusercontent.com/RoelHuijskens/Website2.0/master/website/src/assets/logo_blue.svg" title="RH"/>
-        </span>
-        <span class="links banner-item">
-            <a href="https://www.linkedin.com/in/roel-huijskens/"><font-awesome-icon class="link" icon="fa-brands fa-linkedin" /></a>
-            <a href="https://github.com/RoelHuijskens"><font-awesome-icon class="link" icon="fa-brands fa-github" /></a>
-        </span>
-        
+
+    <div class= "logo-holder">
+    <div class=logo-line-holder>
+        <div>Roe</div>
+
+        <div class="line_holder">
+            <div class="vertical_line">
+            
+        </div>
+            <div class="horizontal_line top">                
+            </div></div></div>
+
+    <div class=logo-line-holder>
+        <div class="line_holder">
+            <div class="horizontal_line bottom">
+            </div>
+            <div class="vertical_line">
+
+            </div>
+        </div><div class="logo-text">uijskens</div></div>
     </div>
 </template>
 
-<script>
-
-export default {
-
-    mounted() {
-    window.addEventListener("scroll", this.onScroll)
-    },
-    beforeDestroy() {
-    window.removeEventListener("scroll", this.onScroll)
-    },
-    methods: {
-    onScroll(e) {
-        this.windowTop = window.top.scrollY /* or: e.target.documentElement.scrollTop */
-        if (this.windowTop > 900) {
-            console.log("showing logo")
-            document.querySelector(".top-banner").style.visibility = "visible"
-        } else {
-            console.log("hiding logo")
-            document.querySelector(".top-banner").style.visibility = "hidden"
-        }
-    
-    }
-
-}
-}
-
-</script>
-
 
 <style>
-.top-banner {
-    position: fixed;
-    background-color: rgb(255, 255, 255);
-    top: 0;
-    width: 100vw;
-    box-shadow: 0px 5px 5px gray;
-    z-index: 20;
-    visibility: hidden;
+.logo-holder{
+    width: 20rem;
+    font-size: 3rem;
+}
+
+
+.line_holder{
     display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-}
-
-.banner-item {
-    width: 15rem;
-}
-
-.logo {
-    height: 7rem;
-    width: 7rem;
-}
-
-.links {
-    top:0;
-    right: 0;
-    z-index:20;
-    display: flex;
-    justify-content: space-around;
-    margin: 2rem 2.5rem 2rem 0;
-    height:100%;
-}
-
-.link {
-    transition: top ease 0.3s;
-    position:relative;
-    width:3rem;
-    height:3rem;
-    color: #213547;
-}
-
-.link:hover {
-    top:-0.2rem;
-}
-
-.logo:hover {
     width: 100%;
+    background-color: #f8f8f8;
+    margin: 0 -5rem 0 0;
 }
 
-@keyframes top-banner-fade-in {
-    0% {
-        opacity: 0;
-        box-shadow: 0 0 0 0;
-    }
+.horizontal_line {
+    width:100%;
+    height:4px;
+    background-color: #213547;
+}
 
-    97% {
-        opacity: 0;
-        box-shadow: 0 0 0 0;
-    }
-    100% {
-        opacity: 1;
-        box-shadow: 0px 5px 5px gray;
-    }
+.vertical_line{
+    margin: auto 0;
+    width: 0.25rem;
+    height: 3rem;
+    background-color: #213547;
+}
+
+.top {
+    margin: auto 0 auto 0;
+}
+
+.bottom {
+    margin: auto 0 auto 0;
+}
+
+.logo-line-holder {
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+
+.logo-text{
+    margin: auto 0;
 }
 
 </style>

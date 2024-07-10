@@ -61,7 +61,7 @@ export default {
         white-space: nowrap;
         height: 20%;
         width: 20rem;
-        background-color: white;
+        background-color: #f8f8f8;
         z-index: -2;
         opacity:1;
     }

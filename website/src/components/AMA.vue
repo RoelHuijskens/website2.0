@@ -66,7 +66,7 @@ export default {
   <div class=section-holder>
     <!-- <div v-bind:class="" :style="imgDivStyle"> -->
       <div class=video-background>
-      <iframe id=ytplayer class="picture-holder" type="text/html"  src="https://www.youtube.com/embed/3Jn3UbF12fA?autoplay=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&mute=1&iv_load_policy=3&playlist=3Jn3UbF12fA" frameborder="0">
+      <iframe id=ytplayer class="picture-holder" type="text/html"  src="https://www.youtube.com/embed/-UKp1VIsX9E?autoplay=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&mute=1&iv_load_policy=3&playlist=-UKp1VIsX9E" frameborder="0">
         </iframe>
       </div>
         <div id=video-fade-in>
@@ -180,7 +180,7 @@ export default {
     color: #24292e;
     opacity: 1;
     vertical-align: middle;
-    background-color: #ffffff;
+    background-color: #f8f8f8;
     background-repeat: no-repeat;
     background-position: right 8px center;
     border-radius: 20px;
@@ -192,7 +192,6 @@ export default {
     position:relative;
     text-align: left;
     margin: 0 0 0 1rem;
-
 }
 
 
@@ -293,7 +292,7 @@ export default {
     line-height: 20px;
     color: #24292e;
     vertical-align: middle;
-    background-color: #ffffff;
+    background-color: #f8f8f8;
     background-repeat: no-repeat;
     background-position: right 8px center;
     border-radius: 10px;

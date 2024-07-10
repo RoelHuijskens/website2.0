@@ -76,7 +76,7 @@ export default {
 .card-format{
   width:40%;
   height:120%;
-  background-color: white;
+  background-color: #f8f8f8;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   border-radius: 20px;
   padding: 2rem 2rem;
@@ -175,14 +175,14 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width:60vw;
+  width:70vw;
   height:60vh;
-  min-height: 500px;
+  min-height: 40rem;
   margin: 15rem 0 -10rem 0;
   border-radius: 20px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  max-width:80rem;
-  min-width: 60rem;
+  max-width:100rem;
+  min-width: 80rem;
   max-height: 50rem;
   position: relative;
   top: 0;

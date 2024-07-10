@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import LifeStage from './components/LifeStage.vue'
 import AMA from './components/AMA.vue'
-import Logo from './components/Logo.vue'
+import Banner from './components/Banner.vue'
 import Me from './components/Me.vue'
 import Connector from './components/lifestage_info/timeline_Connecter.vue'
 
@@ -10,7 +10,8 @@ import Connector from './components/lifestage_info/timeline_Connecter.vue'
 
 <template>
   <div class="app-holder">
-  <Logo/>
+  <Banner/>
+  <div class="background-fill">r</div>
   <AMA :image="'me.jpg'"/>
   <Me/>
   <div class="timeline-end"></div>
@@ -34,16 +35,25 @@ import Connector from './components/lifestage_info/timeline_Connecter.vue'
   font-family: 'Code Next', Verdana, sans-serif;
 }
 
-#app {
-    margin: 0 0;
-    padding:0 0;
+
+.background-fill {
+  background-color: #f8f8f8;
+  width: 100dvw;
+  height: 100vh;
+  z-index: -5;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
+
+
 .app-holder{
   left:0;
   top:0;
   position:absolute;
   width:99.35vw;
   height:100vh;
+  background-color: black;
 }
 
 .timeline-background {
@@ -68,12 +78,6 @@ import Connector from './components/lifestage_info/timeline_Connecter.vue'
   height: 50vh;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
 #padding{
   height: 100vh;
 }
