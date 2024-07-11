@@ -9,26 +9,6 @@ library.add(faLinkedin, faGithub)
 </script>
 
 
-
-<template>
-    <div class="top-banner">
-        <span class = "banner-item" style="color:white">placholder</span>
-        <span class = "banner-item">
-            <Logo :run_animation="this.run_animation"/>
-        </span>
-        <span class="links banner-item">
-            <a href="https://www.linkedin.com/in/roel-huijskens/"><font-awesome-icon class="link" icon="fa-brands fa-linkedin" /></a>
-            <a href="https://github.com/RoelHuijskens"><font-awesome-icon class="link" icon="fa-brands fa-github" /></a>
-        </span>
-        
-    </div>
-    <div @click="seePrivacy" class="top-banner-chat">
-        <div class="chat-disclaimer">
-            <p>{{ privacy }}</p>
-        </div>
-    </div>
-</template>
-
 <script>
 
 export default {
@@ -43,6 +23,7 @@ export default {
     },
 
     mounted() {
+    this.run_animation = false
     this.privacy = this.privacy_placholder
     window.addEventListener("scroll", this.onScroll)
     },
@@ -75,6 +56,28 @@ export default {
 }
 
 </script>
+
+
+<template>
+    <div class="top-banner">
+        <span class = "banner-item" style="color:white">placholder</span>
+        <span class = "banner-item">
+            <Logo :run_animation="run_animation"/>
+        </span>
+        <span class="links banner-item">
+            <a href="https://www.linkedin.com/in/roel-huijskens/"><font-awesome-icon class="link" icon="fa-brands fa-linkedin" /></a>
+            <a href="https://github.com/RoelHuijskens"><font-awesome-icon class="link" icon="fa-brands fa-github" /></a>
+        </span>
+        
+    </div>
+    <div @click="seePrivacy" class="top-banner-chat">
+        <div class="chat-disclaimer">
+            <p>{{ privacy }}</p>
+        </div>
+    </div>
+</template>
+
+
 
 
 <style>

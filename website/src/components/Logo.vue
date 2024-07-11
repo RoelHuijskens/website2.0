@@ -1,29 +1,35 @@
 <script setup>
-    defineProps(['run_animation'])
+    const props = defineProps({
+        run_animation: {
+            type: Boolean,
+            default: false
+        },
+    })
+
 </script>
 
 
 <template>
 
     <div class= "logo-holder">
-    <div :class="{'logo-line-holder': true, 'top-holder': this.run_animation}">
-        <div :class="{'logo-text': this.run_animation, 'top-text':true}">Roe</div>
+    <div :class="{'logo-line-holder': true, 'top-holder': props.run_animation}">
+        <div :class="{'logo-text': props.run_animation, 'top-text':true}">Roe</div>
 
-        <div :class="{line_holder: this.run_animation,  top: this.run_animation}">
+        <div :class="{line_holder: props.run_animation,  top: props.run_animation}">
             <div class="vertical_line">
             
         </div>
-            <div :class="{ horizontal_line: this.run_animation }">                
+            <div :class="{ horizontal_line: props.run_animation }">                
             </div></div></div>
 
-    <div :class="{'logo-line-holder': true, 'bottom-holder': this.run_animation}">
-        <div :class="{line_holder: this.run_animation, bottom: this.run_animation}">
-            <div :class="{ horizontal_line: this.run_animation }">
+    <div :class="{'logo-line-holder': true, 'bottom-holder': props.run_animation}">
+        <div :class="{line_holder: props.run_animation, bottom: props.run_animation}">
+            <div :class="{ horizontal_line: props.run_animation }">
             </div>
             <div class="vertical_line">
 
             </div>
-        </div><div :class="{'logo-text': this.run_animation, 'bottom-text':true}">uijskens</div></div>
+        </div><div :class="{'logo-text': props.run_animation, 'bottom-text':true}">uijskens</div></div>
     </div>
 </template>
 
