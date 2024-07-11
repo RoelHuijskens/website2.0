@@ -13,6 +13,7 @@ dataclasses-json==0.6.4
 Deprecated==1.2.14
 dirtyjson==1.0.8
 distro==1.9.0
+dnspython==2.6.1
 exceptiongroup==1.2.0
 fastapi==0.110.1
 frozenlist==1.4.1
@@ -50,6 +51,7 @@ pandas==2.2.1
 pillow==10.3.0
 pydantic==2.6.4
 pydantic_core==2.16.3
+pymongo==4.8.0
 PyMuPDF==1.24.1
 PyMuPDFb==1.24.1
 pypdf==4.2.0
