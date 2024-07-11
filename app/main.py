@@ -1,17 +1,15 @@
 
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, Request, Response, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 
-
-
-
 import uvicorn
-from typing import List
+from typing import List, Optional
 from fastapi.staticfiles import StaticFiles
 
 
-from models import UserQuestion, UserInput
+from models import UserQuestion, UserInput, ChatResponse, ConversationDto
+from utils import generate_random_string
 
 import logging
 import sys
@@ -21,7 +19,7 @@ import sys
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG,stream=sys.stdout )
 
-from dependencies import get_openai_interface, OpenaiInterface
+from dependencies import get_openai_interface, OpenaiInterface, get_mongodb_client, ConversationsDao
 
 
 app = FastAPI()
@@ -41,20 +39,50 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+    
+
 @app.post("/chat")
-def chat(questions: List[UserInput], interface: OpenaiInterface  = Depends(get_openai_interface)) -> UserInput:
+def chat(
+    question: UserInput, 
+    conversation_id: Optional[str] = None, 
+    interface: OpenaiInterface  = Depends(get_openai_interface), 
+    db: ConversationsDao = Depends(get_mongodb_client)
+    ) -> ChatResponse:
+    
+    if not conversation_id:
+        conversation_id, start_time = generate_random_string()
+        current_chat = ConversationDto(
+            questions=[question],
+            start_time=start_time,
+            chat_id=conversation_id
+        )
+        db.create_chat(
+            current_chat
+        )
+    else:
+        current_chat = db.get_chat_by_id(conversation_id)
+        db.append_chat(
+            question, current_chat.chat_id
+        )
+        if not current_chat:
+            raise HTTPException("Failed to retrieve specified chat, please try refreshing your page")
+
+
     try:
-        
         response = interface.submit_assistant_question(
-            chat_history=questions
+            chat_history=current_chat.questions,
+            question = question
         )
         if response:
-            return UserInput(
+            format_response = ChatResponse(
                 content=UserQuestion(
                     questionText=response
                 ),
-                role="bot"
+                role="bot",
+                chat_id=current_chat.chat_id
             )
+            db.append_chat(format_response, chat_id=format_response.chat_id)
+            return format_response
         else:
             return UserInput(
                 content=UserQuestion(

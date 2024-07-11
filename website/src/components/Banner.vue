@@ -14,7 +14,7 @@ library.add(faLinkedin, faGithub)
     <div class="top-banner">
         <span class = "banner-item" style="color:white">placholder</span>
         <span class = "banner-item">
-            <Logo/>
+            <Logo :run_animation="this.run_animation"/>
         </span>
         <span class="links banner-item">
             <a href="https://www.linkedin.com/in/roel-huijskens/"><font-awesome-icon class="link" icon="fa-brands fa-linkedin" /></a>
@@ -22,13 +22,28 @@ library.add(faLinkedin, faGithub)
         </span>
         
     </div>
+    <div @click="seePrivacy" class="top-banner-chat">
+        <div class="chat-disclaimer">
+            <p>{{ privacy }}</p>
+        </div>
+    </div>
 </template>
 
 <script>
 
 export default {
 
+    data () {
+        return {
+            privacy: "",
+            privacy_placholder: "Privacy",
+            privacy_text: "All questions are sent to the OpenAI API as asked. Questions are visible to me for helping me curate my knowledge base. I do not store any ip information or any other user information not provided in the questions.",
+            run_animation: false
+        }
+    },
+
     mounted() {
+    this.privacy = this.privacy_placholder
     window.addEventListener("scroll", this.onScroll)
     },
     beforeDestroy() {
@@ -40,11 +55,20 @@ export default {
         if (this.windowTop > 900) {
             console.log("showing logo")
             document.querySelector(".top-banner").style.visibility = "visible"
+            this.run_animation = true
         } else {
             console.log("hiding logo")
             document.querySelector(".top-banner").style.visibility = "hidden"
+            this.run_animation = false
         }
     
+    },
+    seePrivacy() {
+        if (this.privacy == this.privacy_placholder){
+            this.privacy = this.privacy_text
+        } else {
+            this.privacy = this.privacy_placholder
+        }
     }
 
 }
@@ -116,6 +140,28 @@ export default {
         opacity: 1;
         box-shadow: 0px 5px 5px gray;
     }
+}
+
+
+
+.top-banner-chat {
+    font-size: 0.8rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 100;
+    visibility: visible;
+}
+
+.chat-disclaimer {
+    background-color: rgb(248,248,248,1);
+    padding: 0 1.5rem;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0px 5px 8px black;
+    max-width: 20rem;
+    margin: 0 3rem;
 }
 
 </style>

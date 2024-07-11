@@ -73,12 +73,12 @@ class OpenaiInterface:
             raise Exception(f"Openai response did not contain a content block, instead got: {response}")
 
 
-    def submit_assistant_question(self, chat_history: list[UserInput]) -> Optional[str]:
+    def submit_assistant_question(self, chat_history: list[UserInput], question: UserInput) -> Optional[str]:
         
         
         try:
             chat_history = [message.to_openai_message() for message in chat_history]
-            question = chat_history.pop().get("content")
+            question = question.content.questionText
             logger.info(f"The length of the question {len(question)}")
             if len(question) > 150:
                 logger.info(f"The length of the question {len(question)}")

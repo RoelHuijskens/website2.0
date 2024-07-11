@@ -17,11 +17,11 @@ import Connector from './components/lifestage_info/timeline_Connecter.vue'
   <div class="timeline-end"></div>
   <div class="timeline-background">
   <Connector position="start" text="2021-Now"></Connector>
-  <LifeStage :title="'APG Asset Management'" :content="'I am currently working at APG Asset Management as a devops engineer in the Self Service & Data Science team. Here I support our business with data analytics tooling such as Posit, R, Python.'" :tag="'APG'" :index="1" />
+  <LifeStage :title="'APG Asset Management'" :content="'I work at APG Asset Management as a devops engineerin the Self Service & Data Science team. Here I support our business with data analytics tooling such as Posit, R, Python.'" :tag="'APG'" :index="1" />
   <Connector position="" text="2018-2020"></Connector>
-  <LifeStage :title="'Utrecht University'" :content="'I have completed my Masters degree in Applied Statistics at the Utrecht University. Providing met with a strong data foundation and analytical skills, and completed my thesis at Statistics Netherlands.'" :tag="'UU'" :index="2" />
+  <LifeStage :title="'Utrecht University'" :content="'I completed my master\'s degree in Applied Statistics at Utrecht University. Providing met with a strong data foundation and analytical skills. I completed my thesis at Statistics Netherlands.'" :tag="'UU'" :index="2" />
   <Connector position="" text="2015-2018"></Connector>
-  <LifeStage :title="'Vrije Universiteit Amsterdam'" :content="'I did my bachelor studies in pyschology at the Vrije universiteit Amsterdam, I initially chose psychology due to my interest in neuroscience. Along the way i got hooked by statistics and programming. '" :tag="'VU'" :index="3" />
+  <LifeStage :title="'Vrije Universiteit Amsterdam'" :content="'I completed my bachelor\'s degree in psychology at the VU in Amsterdam. Initially, I chose psychology due to my interest in neuroscience, but along the way, I became fascinated by statistics and programming. '" :tag="'VU'" :index="3" />
   <Connector position="end" text="1996-2015"></Connector>
   <div class="timeline-filler"></div>  
   </div>

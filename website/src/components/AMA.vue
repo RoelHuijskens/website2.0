@@ -3,14 +3,17 @@
 import Header from './Header.vue'
 import Logo from './Logo.vue'
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import VueMarkdown from 'vue-markdown-render'
+
 </script>
 <script>
 export default {
   data() {
    return{
       messages: [],
-      startup_animation_duration: "12s"
+      startup_animation_duration: "12s",
+      chat_id: null
    }
   },
   props:['image'],
@@ -26,21 +29,32 @@ export default {
   },
   methods: {
     async addMessage(message, role){
+      
       if (message.questionText == ''){
         console.log("Please ask a question... don't be shy!")
         return
       }
+      
       this.messages.push({content: message, role: role})
       this.questionText = ''
+      
       await new Promise(r => setTimeout(r, 1000));
+      
       this.messages.push({content: {'questionText':'thinking...'}, role: 'bot'})
 
       let response
+      let conversation_endpoint
+
+      if (this.chat_id){
+        conversation_endpoint = '?conversation_id=' + this.chat_id
+      } else {
+        conversation_endpoint = ''
+      }
 
       try{
         response = await axios.post(
-        import.meta.env.VITE_BACKEND_URL + '/chat', 
-        this.messages.slice(0, -1))
+        import.meta.env.VITE_BACKEND_URL + '/chat' + conversation_endpoint, 
+        this.messages.slice(-2)[0])
       } catch (error){
         console.log(error)
         response = {
@@ -53,6 +67,10 @@ export default {
       }
       this.messages.pop()
       response.data.role = 'bot'
+
+      this.chat_id = response.data.chat_id
+
+
       this.messages.push(response.data)
     }
   },
@@ -92,7 +110,7 @@ export default {
                   <div class="chat-message bot-message-anmimated"><div class="thinking-animation" >.</div><div class="thinking-animation" style="animation-delay:0.1s">.</div><div class="thinking-animation" style="animation-delay:0.2s">.</div></div>
                 </template>
                 <template v-else>
-                <div v-bind:class="{'chat-message':true, 'bot-message':message.role=='bot', 'user-message':message.role=='user'}">{{ message.content.questionText }}</div>
+                <VueMarkdown v-bind:class="{'chat-message':true, 'bot-message':message.role=='bot', 'user-message':message.role=='user'}" :source="message.content.questionText"/>
                 </template>
               </div> 
             </template>
