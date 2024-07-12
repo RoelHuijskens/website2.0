@@ -3,7 +3,7 @@ from domain.openai import OpenaiInterface
 import os
 from pymongo import MongoClient
 from dao import ConversationsDao
-
+from nofications import NotificationsInterface
 
 openai_client = OpenAI()
 assistant_id = os.getenv("OPENAI_ASS_ID")
@@ -39,4 +39,10 @@ async def get_mongodb_client():
     dao.client.close()
     
     
+async def get_notification_inerface() -> NotificationsInterface:
+    return NotificationsInterface(
+        endpoint=os.getenv("AZURE_MAIL_SERVICE_ENDPOINT"),
+        notification_email=os.getenv("NOTIFICATION_MAIL"),
+        sender_adress=os.getenv("AZURE_MAIL_SERVICE_DOMAIN")
+    )
     

@@ -10,12 +10,10 @@ class Role(Enum):
     BOT = "bot"
 
 
-class UserQuestion(BaseModel):
-    questionText: str
 
 
 class UserInput(BaseModel):
-    content: UserQuestion
+    content: str
     role: Role
 
 
@@ -25,13 +23,13 @@ class UserInput(BaseModel):
         else:
             role = "user"
         return Message(
-            content=self.content.questionText,
+            content=self.content,
             role = role
         )
     
     def to_dict(self) -> dict:
         return {
-            "content": self.content.model_dump(),
+            "content": self.content,
             "role": self.role.value
         }    
         
@@ -40,7 +38,7 @@ class ChatResponse(UserInput):
     
     def to_dict(self) -> dict:
         return {
-            "content": self.content.model_dump(),
+            "content": self.content,
             "role": self.role.value
         }    
     

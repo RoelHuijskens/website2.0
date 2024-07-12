@@ -1,6 +1,6 @@
 
 from pymongo import MongoClient
-from typing import List
+from typing import Optional, List
 from models import ConversationDto, UserInput
 from datetime import datetime
 
@@ -13,14 +13,20 @@ class ConversationsDao(object):
         self.client = client
         
         
-    def append_chat(self, question: UserInput, chat_id: str):
+    def append_chat(self, question: UserInput, chat_id: str, annotations: Optional[List[str]] = None):
         db = self.client['PersonalWebsite']
         collection = db['Conversations']
+        
+        question_dict = question.to_dict()
+        
+        if annotations:
+            question_dict["annotations"] = annotations
+        
         collection.update_one(
             {"_id":chat_id},
             {
                 "$push": {
-                    "questions": question.to_dict()
+                    "questions": question_dict
                 }
             }
         )
@@ -33,6 +39,7 @@ class ConversationsDao(object):
         del chat['_id']
         return ConversationDto(**chat)
     
+    
     def create_chat(self, conversation: ConversationDto):
         db = self.client['PersonalWebsite']
         collection = db['Conversations']
@@ -43,3 +50,14 @@ class ConversationsDao(object):
                 "questions": [conversation.questions[0].to_dict()]
             }
         )
+        
+    def get_recent_chats_count(self, threshold: datetime) -> int:
+        db = self.client['PersonalWebsite']
+        collection = db['Conversations']
+        print(threshold)
+        return collection.count_documents({
+              "start_time": {
+              "$gte": threshold
+  }
+        })
+        

@@ -8,9 +8,10 @@ from openai.types.beta.threads.message import Message
 from openai.types.beta.threads.text_content_block import TextContentBlock
 from openai.types.beta.threads.message_content import MessageContent
 from openai.types.beta.threads.run import Run
+from openai.types.beta.threads.file_citation_annotation import FileCitationAnnotation
 from openai.types.beta.assistant import Assistant
 
-from typing import Optional
+from typing import Optional, Tuple, List
 
 from time import sleep
 from models import UserInput
@@ -47,7 +48,7 @@ class OpenaiInterface:
             content=question
         )
         
-    def _await_response(self, run: Run, thread: Thread):
+    def _await_response(self, run: Run, thread: Thread) -> Tuple[str, Optional[List[FileCitationAnnotation]]]:
         while True:
                 logger.info("Awaiting response...")
                 sleep(3)
@@ -57,32 +58,40 @@ class OpenaiInterface:
                         thread_id=thread.id,
                         limit=1
                     )
-                    response_content = message.data.pop().content
+                    
+                    message_run = message.data.pop()
                     logger.info("Clean response text.")
-                    return OpenaiInterface._clean_openai_response_text(response_content)
+                    return OpenaiInterface._clean_openai_response(message_run.content)
                 logger.warning("Continue waiting for response")
 
 
     @staticmethod
-    def _clean_openai_response_text(response: list[MessageContent]) -> str:
+    def _clean_openai_response(response: list[MessageContent]) -> Tuple[str, List[str]]:
         for content in response:
             if isinstance(content, TextContentBlock):
+                if not content.text.annotations:
+                    response_disclaimer = "  (*This answer is not based on any of my documents in my knowledge base, it might be true or false idk either...*)"
+                else:
+                    response_disclaimer = ""
+                
+                raw_response = content.text.value
                 pattern = r'【\S+†source】'
-                cleaned_response =  re.sub(pattern, '', content.text.value)
-                return cleaned_response
+                response = re.sub(pattern, '', raw_response)
+                
+                return response + response_disclaimer, [annotation.file_citation.file_id for annotation in content.text.annotations]
             raise Exception(f"Openai response did not contain a content block, instead got: {response}")
 
 
-    def submit_assistant_question(self, chat_history: list[UserInput], question: UserInput) -> Optional[str]:
+    def submit_assistant_question(self, chat_history: list[UserInput], question: UserInput) -> Tuple[str, Optional[List[str]]]:
         
         
         try:
             chat_history = [message.to_openai_message() for message in chat_history]
-            question = question.content.questionText
+            question = question.content
             logger.info(f"The length of the question {len(question)}")
             if len(question) > 150:
                 logger.info(f"The length of the question {len(question)}")
-                return f"I'm sorry, your question was too long ({len(question)} characters). I like OpenAI but since I am not made of money I've capped the total character count for questions to 150."
+                return f"I'm sorry, your question was too long ({len(question)} characters). I like OpenAI but since I am not made of money I've capped the total character count for questions to 150.", None
             
             logger.error(chat_history)
             logger.error(question)
@@ -114,8 +123,13 @@ class OpenaiInterface:
             ) 
             
             logger.info("Awaiting response...")
-            return self._await_response(run, thread)
+            response, annotations = self._await_response(run, thread)
+            return response, annotations
+        
         except Exception as e:
             logger.error(f"Something went wrong while interacting with openai: {e}")
         
-       
+    
+    def get_file_info(self, file_id: str):
+
+        return self.client.files.retrieve(file_id=file_id)

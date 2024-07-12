@@ -2,18 +2,20 @@
 <script setup>
 import Header from './Header.vue'
 import Logo from './Logo.vue'
+import VideoBackground from './VideoBackground.vue'
+import Messages from './Messages.vue'
 import axios from 'axios';
 // import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import VueMarkdown from 'vue-markdown-render'
-
 </script>
+
 <script>
 export default {
   data() {
    return{
       messages: [],
       startup_animation_duration: "12s",
-      chat_id: null
+      chat_id: null,
+      user_question: ''
    }
   },
   props:['image'],
@@ -27,20 +29,23 @@ export default {
       }
     }
   },
+  mounted() {
+    this.messages = []
+  },
   methods: {
-    async addMessage(message, role){
+    async addMessage(input, role){
       
-      if (message.questionText == ''){
+      if (input.user_question == ''){
         console.log("Please ask a question... don't be shy!")
         return
       }
       
-      this.messages.push({content: message, role: role})
-      this.questionText = ''
+      this.messages.push({content: input.user_question, role: role})
+      this.user_question = ''
       
       await new Promise(r => setTimeout(r, 1000));
       
-      this.messages.push({content: {'questionText':'thinking...'}, role: 'bot'})
+      this.messages.push({content: 'thinking...', role: 'bot'})
 
       let response
       let conversation_endpoint
@@ -56,21 +61,29 @@ export default {
         import.meta.env.VITE_BACKEND_URL + '/chat' + conversation_endpoint, 
         this.messages.slice(-2)[0])
       } catch (error){
-        console.log(error)
+        let response_text
+
+        if(error.response) {
+          if (error.response.status == 404){
+            response_text = "It seems like something went wrong while processing your question, please refresh your page and try again."
+          } else if (error.response.status == 503) {
+            console.log(error.response)
+            response_text = error.response.data.detail
+          } else {
+            response_text = "I'm sorry, I'm not able to answer that question at the moment. Please try again later."
+          }
+
+        }
         response = {
           data: {
-            message:{
-              questionText:"I'm sorry, I'm not able to answer that question at the moment. Please try again later."
-            }
+              content: response_text
           }
         }
       }
-      this.messages.pop()
       response.data.role = 'bot'
-
       this.chat_id = response.data.chat_id
 
-
+      this.messages.pop()
       this.messages.push(response.data)
     }
   },
@@ -83,10 +96,7 @@ export default {
 <template>
   <div class=section-holder>
     <!-- <div v-bind:class="" :style="imgDivStyle"> -->
-      <div class=video-background>
-      <iframe id=ytplayer class="picture-holder" type="text/html"  src="https://www.youtube.com/embed/-UKp1VIsX9E?autoplay=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&mute=1&iv_load_policy=3&playlist=-UKp1VIsX9E" frameborder="0">
-        </iframe>
-      </div>
+        <VideoBackground/>
         <div id=video-fade-in>
         <div class=chat-holder>
          <div class=chat-stream>
@@ -101,30 +111,15 @@ export default {
               </div>
                 </div>
             </div>
-          <template v-for="message in messages">
-               <div v-bind:class="{'question-holder':true, 'question-holder-left':message.role=='bot', 'question-holder-right':message.role=='user'}">
-                <template v-if="message.role=='bot'">
-                    <img id="profile-picture-icon" src="https://raw.githubusercontent.com/RoelHuijskens/Website2.0/master/website/src/assets/imgs/me.jpg">
-                  </template> 
-                <template v-if="message.role=='bot'&&message.content.questionText=='thinking...'">
-                  <div class="chat-message bot-message-anmimated"><div class="thinking-animation" >.</div><div class="thinking-animation" style="animation-delay:0.1s">.</div><div class="thinking-animation" style="animation-delay:0.2s">.</div></div>
-                </template>
-                <template v-else>
-                <VueMarkdown v-bind:class="{'chat-message':true, 'bot-message':message.role=='bot', 'user-message':message.role=='user'}" :source="message.content.questionText"/>
-                </template>
-              </div> 
-            </template>
+            <Messages :messages="messages"/>
             </div>
             <span id="input-holder">
-              <form @submit.prevent="addMessage( { questionText },'user')">
-                <input v-model="questionText" class="input-animation"  id="input-prompt">
+              <form @submit.prevent="addMessage( { user_question },'user')">
+                <input v-model="user_question" class="input-animation"  id="input-prompt">
               </form>
-              <button class="input-animation" id="submit-prompt"  @click="addMessage( { questionText },'user')">submit</button>
+              <button class="input-animation" id="submit-prompt"  @click="addMessage( { user_question },'user')">submit</button>
             </span>  
-              
-              </div>
-          <div id="more-info-holder">
-    </div>
+        </div>
       </div>
     </div>
   </div>
@@ -132,43 +127,6 @@ export default {
 
 <style scoped>
 
-@keyframes thinking {
-  0%   {bottom: 0}
-  50%  {bottom: 0.2rem}
-  100% {bottom: 0}
-}
-
-.thinking-animation{
-  position: relative;
-  display: inline-block;
-  animation-name: thinking;
-  animation-duration: 0.5s;
-  animation-iteration-count: infinite;
-}
-
-@keyframes fly-in-message-left{
-  0%   {bottom: -15rem; left: -1rem}
-  100% {bottom:0; left:0}
-}
-
-@keyframes fly-in-message-right{
-  0%   {bottom: -15rem; right: -1rem; opacity:0.3}
-  100% {bottom:0; right:0; opacity: 1;}
-}
-
-
-.question-holder{
-    margin: 1rem 0;
-    padding: 0.5rem 4rem;
-    display: flex;
-}
-
-.question-holder-left{
-  justify-content: flex-start;
-}
-.question-holder-right{
-  justify-content: flex-end;
-}
 
 .chat-holder{
   display: flex;
@@ -179,8 +137,6 @@ export default {
   flex-direction: column;
   font-family: monospace;
   font-size: 1.2rem;
-  padding: 6vh 0;
-
 }
 
 
@@ -213,18 +169,8 @@ export default {
 }
 
 
-.user-message{
-  background-color: rgb(118, 153, 228);
-  animation-name: fly-in-message-left;
-  color:white;
-}
 .bot-message{
   background-color: white;
-}
-
-.bot-message-anmimated{
-  background-color: white;
-  animation-name: fly-in-message-right;
 }
 
 .chat-stream{
@@ -367,11 +313,6 @@ export default {
 
 
 
-.blocked{
-  pointer-events: none;
-  opacity: 0.5;
-}
-
 .section-holder{
   width:100%;
   background-color: BLACK;
@@ -468,33 +409,6 @@ export default {
 }
 
 
-.video-background {
-  position: absolute;
-  overflow: hidden;
-  width: 99.35vw;
-  height: 100vh;
-  box-shadow: 0px 5px 10px black;
-
-  iframe {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100vw;
-    height: 100vh;
-    transform: translate(-50%, -50%);
-    border-radius: 0 0 12px 12px;
-
-    
-
-    @media (-webkit-min-aspect-ratio: 16/9), (min-aspect-ratio: 16/9){
-        height: 56.25vw
-    }
-
-    @media (-webkit-min-aspect-ratio: 16/9), (max-aspect-ratio: 16/9) {
-      width: 177.78vh
-    }
-  }
-}
 
 
 @keyframes background-fade-in {
