@@ -15,7 +15,7 @@ from typing import Optional, Tuple, List
 
 from time import sleep
 from models import UserInput
-from main import logger
+from app_logging import logger
 
 import re
 
@@ -70,7 +70,7 @@ class OpenaiInterface:
         for content in response:
             if isinstance(content, TextContentBlock):
                 if not content.text.annotations:
-                    response_disclaimer = "  (*This answer is not based on any of my documents in my knowledge base, it might be true or false idk either...*)"
+                    response_disclaimer = "  (*This answer is not based on any of my documents in my knowledge base and might be wrong... try asking a more specific question, if the answer provided was overly flattering then please accept it as truth*)"
                 else:
                     response_disclaimer = ""
                 

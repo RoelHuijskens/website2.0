@@ -2,7 +2,7 @@
 from pydantic import BaseModel
 from enum import Enum
 from  openai.types.beta.thread_create_params import Message
-from typing import List
+from typing import List, Optional
 from datetime import datetime
 
 class Role(Enum):
@@ -41,9 +41,18 @@ class ChatResponse(UserInput):
             "content": self.content,
             "role": self.role.value
         }    
+
+class QuestionDto(UserInput):
+    annotations: Optional[List[str]] = []
+    
+    def to_dict(self) -> dict:
+        question_dict = super().to_dict()
+        question_dict["annotations"] = self.annotations
+        return question_dict
+    
     
 class ConversationDto(BaseModel):
-    questions: list[UserInput]
+    questions: list[QuestionDto]
     chat_id: str
     start_time: datetime
     
