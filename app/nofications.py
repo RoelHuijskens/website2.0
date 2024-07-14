@@ -1,7 +1,7 @@
 from azure.communication.email import EmailClient
 from azure.identity import DefaultAzureCredential
 import os 
-
+from app_logging import logger
 
 class NotificationsInterface(object):
     
@@ -50,13 +50,17 @@ class NotificationsInterface(object):
         
     
     def _send_message(self, message: dict):
+        
         base_message = self._get_base_message_template()
         base_message["content"] = message
-        poller = self.client.begin_send(base_message)
-        result = poller.result()
+        self.client.begin_send(base_message)
 
         
          
     
+def update_thread_executor(interface: NotificationsInterface, message_text: str):
     
-    
+    try:
+        interface.send_update_notification(message_text=message_text)
+    except Exception as e:
+        logger.error(f"Update Execution failed with error: {e}")

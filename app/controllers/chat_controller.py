@@ -1,13 +1,14 @@
 from domain.openai import OpenaiInterface
-from nofications import NotificationsInterface
+from nofications import NotificationsInterface, update_thread_executor
 from dao import ConversationsDao
 from models import QuestionDto, ConversationDto, ChatResponse
 from datetime import datetime, timedelta
 from fastapi import HTTPException
 from typing import Optional, List
 from utils import generate_random_string, generate_security_hash
-import os
-import hashlib
+from app_logging import logger
+import threading
+
 
 class ChatsController(object):
     
@@ -19,16 +20,23 @@ class ChatsController(object):
         
         
     
-    def _check_recent_chats_limit(self, question: QuestionDto):
+    def _check_recent_chats_limit(self, question: QuestionDto, ):
         if self.db.get_recent_chats_count(datetime.now() - timedelta(hours=1)) > 30:
-            self.notifications.send_update_notification(f"Someone triggerd the max conversations count with question: {question.content}")
+            threading.Thread(
+                target=update_thread_executor, args=(self.notifications, f"Someone triggerd the max conversations count with question: {question.content}")
+                ).start()
             raise HTTPException(detail="Appologies, too many conversations have been started in the last hour, please try again later.", status_code=503)
+            
         
     
-    def _check_current_chat_limit(self, current_chat: ConversationDto):
+    def _check_current_chat_limit(self, current_chat: ConversationDto) -> Optional[ChatResponse]:
         
         if len(current_chat.questions) > 9:
-            raise HTTPException(detail="It seems you have a lot of questions, let's connect via [**linkedin** (link)](https://nl.linkedin.com/in/roel-huijskens) I can answer more there.", status_code=503)
+            return ChatResponse(
+                        content="It seems you have a lot of questions, let's connect via [**linkedin** (link)](https://nl.linkedin.com/in/roel-huijskens) I can answer more there.",
+                        role="bot",
+                        chat_id=current_chat.chat_id,
+                    ) 
     
     
     def _get_or_create_conversation(self, question:QuestionDto ,conversation_id: Optional[str]) -> ConversationDto:
@@ -44,14 +52,18 @@ class ChatsController(object):
                 current_chat
             )
             admin_hash = generate_security_hash(seed=conversation_id)
-            self.notifications.send_update_notification(f"Someone started a new conversation, see: https://roel-huijskens.azurewebsites.net/chat?conversation_id={conversation_id}&hash={admin_hash}")
+            logger.info("Starting io task")
+            threading.Thread(
+                target=update_thread_executor, args=(self.notifications, 
+                                                     f"Someone started a new conversation, see: https://roel-huijskens.azurewebsites.net/chat?conversation_id={conversation_id}&hash={admin_hash}")
+                ).start()
+            
+            logger.info("Running after io task.")
         else:
             current_chat = self.db.get_chat_by_id(conversation_id)
             self.db.append_chat(
                 question, current_chat.chat_id
             )
-            
-            self._check_current_chat_limit(current_chat=current_chat)
             
             if not current_chat:
                 raise HTTPException(detail="Failed to retrieve specified chat, please try refreshing your page", status_code=404)
@@ -77,6 +89,10 @@ class ChatsController(object):
         
         self._check_recent_chats_limit(question)
         current_chat = self._get_or_create_conversation(question, conversation_id)
+        chat_limit_reached = self._check_current_chat_limit(current_chat=current_chat)
+        if chat_limit_reached:
+            return chat_limit_reached
+        
         
         response, annotations = self.openai_client.submit_assistant_question(
             chat_history=current_chat.questions,
@@ -94,11 +110,6 @@ class ChatsController(object):
         
 
     def get_chat(self, conversation_id: str, hash:str) -> dict[str, str]:
-    
-    
-        
-
-    
         if hash == generate_security_hash(conversation_id):
             chat = self.db.get_chat_by_id(conversation_id)
             if not chat:
