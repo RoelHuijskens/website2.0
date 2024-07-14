@@ -70,7 +70,7 @@ class OpenaiInterface:
         for content in response:
             if isinstance(content, TextContentBlock):
                 if not content.text.annotations:
-                    response_disclaimer = "  (*This answer is not based on any of my documents in my knowledge base and might be wrong... try asking a more specific question, if the answer provided was overly flattering then please accept it as truth*)"
+                    response_disclaimer = "  (*This answer is not based on any of my documents in my knowledge base and might be wrong... you could try asking a more specific question*)"
                 else:
                     response_disclaimer = ""
                 
