@@ -26,6 +26,7 @@ import Connector from './components/lifestage_info/timeline_Connecter.vue'
   <div class="timeline-filler"></div>  
   </div>
   <div class="timeline-end"></div>
+  <div class="tail-filler"></div>
  </div>
 </template>
 
@@ -76,6 +77,10 @@ import Connector from './components/lifestage_info/timeline_Connecter.vue'
 
 .timeline-filler {
   height: 50vh;
+}
+
+.tail-filler {
+  height:16rem;
 }
 
 #padding{

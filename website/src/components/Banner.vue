@@ -67,6 +67,7 @@ export default {
         <span class="links banner-item">
             <a href="https://www.linkedin.com/in/roel-huijskens/"><font-awesome-icon class="link" icon="fa-brands fa-linkedin" /></a>
             <a href="https://github.com/RoelHuijskens"><font-awesome-icon class="link" icon="fa-brands fa-github" /></a>
+            <a href="https://github.com/RoelHuijskens/website2.0/blob/master/website/src/assets/docs/Resume_eng.pdf"><b class="link">CV</b></a>
         </span>
         
     </div>
@@ -119,6 +120,7 @@ export default {
     width:3rem;
     height:3rem;
     color: #213547;
+    font-size: 2rem;
 }
 
 .link:hover {
