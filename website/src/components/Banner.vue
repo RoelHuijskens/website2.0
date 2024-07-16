@@ -110,17 +110,17 @@ export default {
     z-index:20;
     display: flex;
     justify-content: space-around;
-    margin: 2rem 2.5rem 2rem 0;
+    margin: 3rem 2.5rem 2rem 0;
     height:100%;
 }
 
 .link {
     transition: top ease 0.3s;
     position:relative;
-    width:3rem;
-    height:3rem;
+    width:2rem;
+    height:2rem;
     color: #213547;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .link:hover {
