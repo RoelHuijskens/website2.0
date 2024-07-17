@@ -7,3 +7,4 @@ node_modules/*
 setup.sh
 *.pyc*
 *_cache*
+app/test.py
