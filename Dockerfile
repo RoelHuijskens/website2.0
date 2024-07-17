@@ -1,6 +1,7 @@
 #
 FROM node:22 AS npm_build
 WORKDIR /tmp
+ARG VITE_BACKEND_URL=http://roel-huijskens.azurewebsites.net
 RUN mkdir build
 COPY ./website /tmp
 RUN rm -rf /tmp/vite.config.ts
