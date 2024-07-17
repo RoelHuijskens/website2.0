@@ -33,6 +33,7 @@ def generate_security_hash(seed: str) -> str:
     Returns:
         str: Result of sha256 hash
     """
+    raise ValueError("oh lawd")
 
     salt = os.getenv("ADMIN_HASH")
     if not salt:
