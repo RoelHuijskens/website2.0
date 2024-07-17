@@ -6,7 +6,7 @@
         <p>
             After my bachelor's studies, I wanted to further develop my skills in statistics and data analysis.
             I chose to pursue a master's degree in Applied Statistics at Utrecht University.
-            This selective porgram provided me with a strong foundation in statistical theory and practical data analysis skills.
+            This selective program provided me with a strong foundation in statistical theory and practical data analysis skills.
             During my studies and thesis internship, I found myself further interested in the more technical aspects of machine learning and programming.
         </p>
     </div>
