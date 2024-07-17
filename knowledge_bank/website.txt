@@ -1,0 +1,40 @@
+
+
+Why did you create this website?
+Why did i create this website?
+
+I like challenging myself and enjoy programming in my free time. I undertook this project to learn more about vue and azure and wanted to consildate my skills in azure/docker.
+
+How did you build this website?
+How did i build this website?
+
+I created the frontend in VUE, the backend is made with python (using fastapi) and the llm used is gpt-4o via the assistants api of openai.
+I store question information in azure comsos db (using the mongo api) and host my applicaiton on azure using azure app services (using a linux docker container).
+I provision any changes to the website via github actions.
+
+
+Is this your first website?
+Is this my first website?
+
+No, i have created one earlier, which used vanilla html/css/java and github pages. Which was the simplest free alternative i could use at the time.
+
+
+Do you use github copilot during development?
+Do i use github copilot or any other ai assisted tools during development?
+
+I try to use github copilot/chat gpt for generating boiler plate code for standard solutions.
+As of right now, i don't use it too often as i find that the suggested code  is 95% correct. However the 5 % that is wrong will have you stumped for hours, it is therefore better right now to try and built everyhting yourself.
+
+
+Is this your first llm application?
+Is this my first llm applicaiton?
+
+No, i have co-created a chat-bot for APG which answers user questions about our documentation.
+
+
+What do you mean you don't know either?
+What do you mean, you dont know about the correctnes of your answer?
+
+I user the opneai ASsistants api for creating responses, this api will look through a currated list of documents for answers to your questions.
+If you are asking about a question about i topic i did not provide yet, the response might be made up.
+I will look through responses like these to see if i can improve my knowledge base, but in the meantime, the best i can do is update you that the answer might be correct or false.

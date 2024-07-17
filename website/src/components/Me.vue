@@ -3,7 +3,7 @@
         <div id="my-info">
         <h1>About Me</h1>
         <p>
-            Good day to you and welcome to my site! I keep this place around for experimentation and sharing some info about myself. 
+            Good day to you and welcome to my site! I keep this place around for experimentation and sharing some info about myself.
             My name is Roel Huijskens, I am {{ this.getAge() }} years old and currently live in The Hague. I am passionate about software development, AI, and data engineering, which are integral to my daily work. You can learn more about these interests below.
             Currently, I work at APG Asset Management as a DevOps Engineeer. Before I started at APG I completed my masters degree in applied statistics at Utrecht University and my bachelors degree in psychology at the VU University.
             In my free time I also like to do stuff away from my PC such as working out, cycling, watching movies.

@@ -15,14 +15,14 @@
     <div v-bind:class="{'question-holder':true, 'question-holder-left':message.role=='bot', 'question-holder-right':message.role=='user'}">
      <template v-if="message.role=='bot'">
          <img id="profile-picture-icon" src="https://raw.githubusercontent.com/RoelHuijskens/Website2.0/master/website/src/assets/imgs/me.jpg">
-       </template> 
+       </template>
      <template v-if="message.role=='bot'&&message.content=='thinking...'">
        <div class="chat-message bot-message-anmimated"><div class="thinking-animation" >.</div><div class="thinking-animation" style="animation-delay:0.1s">.</div><div class="thinking-animation" style="animation-delay:0.2s">.</div></div>
      </template>
      <template v-else>
      <VueMarkdown v-bind:class="{'chat-message':true, 'bot-message':message.role=='bot', 'user-message':message.role=='user'}" :source="message.content"/>
      </template>
-   </div> 
+   </div>
  </template>
 </template>
 
@@ -132,7 +132,7 @@
     height: 15vw;
     border-radius: 12% 12% 12% 12%;
   }
-  
+
   80% {opacity: 1;
     box-shadow: 0px 0px 80px -18px rgba(255,255,255,1);
     width: 15vw;
@@ -144,7 +144,7 @@
     width: 4rem;
     height: 4rem;
   }
-  
+
 }
 
 

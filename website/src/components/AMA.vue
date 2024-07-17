@@ -34,17 +34,17 @@ export default {
   },
   methods: {
     async addMessage(input, role){
-      
+
       if (input.user_question == ''){
         console.log("Please ask a question... don't be shy!")
         return
       }
-      
+
       this.messages.push({content: input.user_question, role: role})
       this.user_question = ''
-      
+
       await new Promise(r => setTimeout(r, 1000));
-      
+
       this.messages.push({content: 'thinking...', role: 'bot'})
 
       let response
@@ -58,7 +58,7 @@ export default {
 
       try{
         response = await axios.post(
-        import.meta.env.VITE_BACKEND_URL + '/chat' + conversation_endpoint, 
+        import.meta.env.VITE_BACKEND_URL + '/chat' + conversation_endpoint,
         this.messages.slice(-2)[0])
       } catch (error){
         let response_text
@@ -100,7 +100,7 @@ export default {
         <div id=video-fade-in>
         <div class=chat-holder>
          <div class=chat-stream>
-           <div class=chat-messages > 
+           <div class=chat-messages >
             <div class=question-holder question-holder-left>
               <div id=initial-message-holder>
               <div class=header></div> <div id=initial-message>
@@ -118,7 +118,7 @@ export default {
                 <input v-model="user_question" class="input-animation"  id="input-prompt">
               </form>
               <button class="input-animation" id="submit-prompt"  @click="addMessage( { user_question },'user')">submit</button>
-            </span>  
+            </span>
         </div>
       </div>
     </div>
@@ -188,7 +188,7 @@ export default {
 @keyframes chat-stream-shadow-animation{
   0% {box-shadow: rgb(38, 57, 77) 0 0 0 0;}
   95% {box-shadow: rgb(38, 57, 77) 0 0 0 0;}
-  100% {box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;}  
+  100% {box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;}
 }
 
 
@@ -233,7 +233,7 @@ export default {
     height: 15vw;
     border-radius: 12% 12% 12% 12%;
   }
-  
+
   80% {opacity: 1;
     box-shadow: 0px 0px 80px -18px rgba(255,255,255,1);
     width: 15vw;
@@ -245,7 +245,7 @@ export default {
     width: 4rem;
     height: 4rem;
   }
-  
+
 }
 
 
@@ -266,7 +266,7 @@ export default {
     height: 1rem;
     max-width: 45rem;
     min-width: 18rem;
-    
+
     :focus{
         border-color: #0366d6;
         outline: none;
@@ -421,7 +421,7 @@ export default {
   100% {
     background-color: rgba(0,0,0,0);
   }
-  
+
 }
 
 </style>

@@ -1,0 +1,11 @@
+export OPENAI_API_KEY=test-openai-key
+export OPENAI_ASS_ID=test-openai-ass-id
+export DB_USER_NAME=test-db-name
+export DB_PASSWORD=test-db-pw
+export AZURE_CLIENT_ID=test-azure-ad-client
+export AZURE_TENANT_ID=test-azure-tennant-id
+export AZURE_CLIENT_SECRET=test-azure-client
+export AZURE_MAIL_SERVICE_ENDPOINT=test-mail-endoint
+export AZURE_MAIL_SERVICE_DOMAIN=test-mail-domain
+export NOTIFICATION_MAIL=test-notification-mail
+export ADMIN_HASH=test-admin-hash

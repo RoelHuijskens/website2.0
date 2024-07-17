@@ -46,8 +46,13 @@
 
             <ul>
                 <li>
-                    <b>Initiated the development of a chatbot using the openai api:</b>
-                    <p>Due to our teams responsibility of maintaining several platforms we have to create a lot of documentaiton</p> 
+                    <b>Initiated the development of a chatbot using the openai api.</b>
+                    <p>
+                        Due to our teams responsibility of maintaining several platforms we have to create/maintain/distrubte a lot of documentation.
+                        This results in a lot of questions from users where to find this documentation on confluence.
+                        I Initiated the development of a chatbot which utilizes the openai api for answering user questions (similar to the chat app of this website).
+                        This solution was matured in collaboration with one of my colleagues, and has been the most fun project to work on at apg.
+                    </p>
                 </li>
                 <li>
                     <b>Developed a Data interface for Bloomberg Market data.</b>

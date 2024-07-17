@@ -17,9 +17,9 @@
 
         <div :class="{line_holder: props.run_animation,  top: props.run_animation}">
             <div class="vertical_line">
-            
+
         </div>
-            <div :class="{ horizontal_line: props.run_animation }">                
+            <div :class="{ horizontal_line: props.run_animation }">
             </div></div></div>
 
     <div :class="{'logo-line-holder': true, 'bottom-holder': props.run_animation}">
@@ -111,7 +111,7 @@
 
 .top-text {
     padding: 0 2px 0 0;
-   
+
 }
 
 .bottom-text {
@@ -157,7 +157,7 @@
 }
 
 @keyframes logo-slide-animation-top {
-    
+
     0% {
         margin: 0 0 0 3rem;
     }
@@ -174,13 +174,13 @@
 
     60% {
         margin: 0 0 0 -6rem;
-        
+
     }
 
 
     100% {
         margin: 0;
-        
+
     }
 }
 
@@ -233,7 +233,7 @@
     60% {
         opacity: 0;
     }
-    
+
     65% {
         opacity: 1;
     }
