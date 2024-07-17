@@ -23,7 +23,7 @@ import Connector from './components/lifestage_info/timeline_Connecter.vue'
   <Connector position="" text="2015-2018"></Connector>
   <LifeStage :title="'Vrije Universiteit Amsterdam'" :content="'I completed my bachelor\'s degree in psychology at the VU in Amsterdam. Initially, I chose psychology due to my interest in neuroscience, but along the way, I became fascinated by statistics and programming. '" :tag="'VU'" :index="3" />
   <Connector position="end" text="1996-2015"></Connector>
-  <div class="timeline-filler"></div>  
+  <div class="timeline-filler"></div>
   </div>
   <div class="timeline-end"></div>
   <div class="tail-filler"></div>
@@ -120,4 +120,3 @@ div::-webkit-scrollbar-thumb {
 
 
 </style>
-

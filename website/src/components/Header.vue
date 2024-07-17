@@ -67,13 +67,13 @@ export default {
     0%{opacity: 0;}
     50%{opacity: 1;}
     100%{opacity: 0;}
-    
+
 }
 
 
 #prompt-start {
     margin: 0 0.3rem;
-    
+
 }
 
 #prompt-cursor {

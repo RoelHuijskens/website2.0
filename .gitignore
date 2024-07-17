@@ -5,3 +5,6 @@ node_modules/*
 *venv*
 *.env*
 setup.sh
+*.pyc*
+*_cache*
+app/test.py

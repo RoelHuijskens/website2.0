@@ -42,7 +42,7 @@ export default {
             document.querySelector(".top-banner").style.visibility = "hidden"
             this.run_animation = false
         }
-    
+
     },
     seePrivacy() {
         if (this.privacy == this.privacy_placholder){
@@ -69,7 +69,7 @@ export default {
             <a href="https://github.com/RoelHuijskens"><font-awesome-icon class="link" icon="fa-brands fa-github" /></a>
             <a href="https://github.com/RoelHuijskens/website2.0/blob/master/website/src/assets/docs/Resume_eng.pdf"><b class="link">CV</b></a>
         </span>
-        
+
     </div>
     <div @click="seePrivacy" class="top-banner-chat">
         <div class="chat-disclaimer">

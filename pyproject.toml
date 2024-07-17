@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "website2-0"
+version = "0.1.0"
+description = "Personal Website Roel Huijskens"
+authors = ["Roel Huijskens"]
+readme = "README.md"
+packages = [{include = "website2"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "0.110.1"
+uvicorn = "0.29.0"
+pydantic = "2.6.4"
+openai = "1.35.10"
+azure-communication-email = "1.0.0"
+azure-monitor-opentelemetry = "^1.6.0"
+azure-identity = "^1.17.1"
+pymongo = "^4.8.0"
+pylama = "^8.4.1"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.5.2"
+pytest = "^8.2.2"
+flake8 = "^7.1.0"
+isort = "^5.13.2"
+black = "^24.4.2"
+mypy = "^1.10.1"
+pre-commit = "^3.7.1"
+
+[tool.ruff]
+line-length = 79
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

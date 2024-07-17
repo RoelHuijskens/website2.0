@@ -4,9 +4,9 @@
         <h1 class="title-card-holder-full">Utrecht University</h1>
         <h3>2018-2020</h3>
         <p>
-            After my bachelor's studies, I wanted to further develop my skills in statistics and data analysis. 
+            After my bachelor's studies, I wanted to further develop my skills in statistics and data analysis.
             I chose to pursue a master's degree in Applied Statistics at Utrecht University.
-            This selective porgram provided me with a strong foundation in statistical theory and practical data analysis skills.
+            This selective program provided me with a strong foundation in statistical theory and practical data analysis skills.
             During my studies and thesis internship, I found myself further interested in the more technical aspects of machine learning and programming.
         </p>
     </div>
@@ -34,7 +34,7 @@
     <div class="card-format card-appear" :style="{animationDuration: '2s'}">
         <h2 class="title-card-holder-full">Thesis</h2>
         <p>
-           During my master's program, I chose to do my thesis internship at Statistics Netherlands (CBS). 
+           During my master's program, I chose to do my thesis internship at Statistics Netherlands (CBS).
            Alongside my thesis, I completed the EMOS program, an extracurricular program that focused on applying statistical methods for national statistics.
            My thesis focused on the problem of sample matching, a method to utilize data from non-probability samples in official statistics.
         </p>

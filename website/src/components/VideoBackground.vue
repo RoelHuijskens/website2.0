@@ -24,7 +24,7 @@
     transform: translate(-50%, -50%);
     border-radius: 0 0 12px 12px;
 
-    
+
 
     @media (-webkit-min-aspect-ratio: 16/9), (min-aspect-ratio: 16/9){
         height: 56.25vw

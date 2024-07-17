@@ -5,19 +5,19 @@ info:
     text: |
       My name is Roel Huijskens, I am 27 years old and live in the Hague.
       I love challening myself both physically and mentally.
-  
+
   - title: Where do i live?
     text: |
-      I live in The Hague in the Netherlands. I have lived here basically all of my live. 
+      I live in The Hague in the Netherlands. I have lived here basically all of my live.
 
   - title: What do i enjoy doing?
     text: |
-      I enjoy programming, working out, cycling, walking on the beach, listening to music, playing games and watching movies. 
+      I enjoy programming, working out, cycling, walking on the beach, listening to music, playing games and watching movies.
 
 
   - title: Working out
     text: |
-      My favourite workout excercises are squats and bench press. 
+      My favourite workout excercises are squats and bench press.
       I try to workout 4-5 days per week as this is a great time to unwind and relax.
       I used to be an avid runner, but now I have switched to cycling, I enjoy exploring the different regions of South Holland.
       I live in the Hague, so I can go take the tram to go to the beach on Scheveningen or Kijkduin
@@ -27,7 +27,7 @@ info:
       My favourite music artists are:
       - Post Malone
       - Juice World
-      - Linkin Park 
+      - Linkin Park
       - Eminem
       - Arctic Monkeys
 
@@ -43,10 +43,10 @@ info:
       - Margin call: I love the depicted dynamics of the people in this movie. https://www.imdb.com/title/tt1615147/?ref_=fn_al_tt_1
 
   - title: Bachelor studies
-    text: |       
+    text: |
       I have done my bachelors in Biological Psychology with a specialization in behavioural genetics at the Vrije Universtieit Amsterdam from 2015 till 2018.
       My initial interested in during this Bachelor was Neuropsychology as I was always fascinated by the innerworkings of the Human brain.
-      However, I was most enthusiastic during my statistics and programming courses due to it's wide applicability and intersting challanges it poses. 
+      However, I was most enthusiastic during my statistics and programming courses due to it's wide applicability and intersting challanges it poses.
 
       My favourite coursers during my studies where:
 
@@ -55,7 +55,7 @@ info:
       - psychometrics
       - behavioural genetics
 
-      My thesis was titled '' which was awarderded by the faculty as the best undergrate thesis of my cohort. 
+      My thesis was titled '' which was awarderded by the faculty as the best undergrate thesis of my cohort.
 
   - title: Master studies
     text: |
@@ -75,13 +75,13 @@ info:
   - title: Job APG Asset Managment
     text: |
       As of 2021, I have been working as a Devops Engineer in the self-service and data-science team at APG Asset Management (AM).
-      In this role, I support our portfolio managers in building data applications in R and Python aiding them in their data-driven decision making. 
-      I provide both support on a functional and technical basis. 
+      In this role, I support our portfolio managers in building data applications in R and Python aiding them in their data-driven decision making.
+      I provide both support on a functional and technical basis.
       Be it helping implemeting a specific R/Python application, as well as maintaining our server environment and building deployment pipelines with code checking.
       I thouroughly enjoy helping users with solving their technical problems and teaching them to become better citizen developers themselves.
       In my vision in the future everyone will be an engineer in some capacity, be that writing code such as R or python, using low-code solutions like dataiku.
 
-      During my years at APG i signficantly improved my technical skills, and thought me to become a better programmer/data engineer. 
+      During my years at APG i signficantly improved my technical skills, and thought me to become a better programmer/data engineer.
       Tools/Languages utilized in our team are:
 
       - Python (strealit, fastapi, flask, dash, pytest)
@@ -94,8 +94,3 @@ info:
       - Linux (RHEL 8)
       - Ansible
       - Azure (POC for Kubernetes)
-
-
-
-
-

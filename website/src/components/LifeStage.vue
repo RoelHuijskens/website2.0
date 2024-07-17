@@ -1,4 +1,4 @@
-<script setup>  
+<script setup>
 import { ref } from 'vue';
 import APG from './lifestage_info/APG.vue'
 import UU from './lifestage_info/UU.vue'
@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     allign_content_left() {
-      return this.index%2 == 0 
+      return this.index%2 == 0
     },
     imgDivStyle() {
       const image_path = 'https://raw.githubusercontent.com/RoelHuijskens/Website2.0/master/website/src/assets/imgs/' + this.tag + '.jpg'
@@ -69,7 +69,7 @@ export default {
       <p>{{ infoText[tag] }}</p>
     </div>
   </div>
-  
+
 </template>
 
 <style>
@@ -134,7 +134,7 @@ export default {
   to {
     opacity: 1;
   }
-} 
+}
 
 #card-initial{
   margin-top: 0;
