@@ -67,7 +67,7 @@ export default {
         <span class="links banner-item">
             <a href="https://www.linkedin.com/in/roel-huijskens/"><font-awesome-icon class="link" icon="fa-brands fa-linkedin" /></a>
             <a href="https://github.com/RoelHuijskens"><font-awesome-icon class="link" icon="fa-brands fa-github" /></a>
-            <a href="https://github.com/RoelHuijskens/website2.0/blob/master/website/src/assets/docs/Resume_eng.pdf"><b class="link">CV</b></a>
+            <a href="https://github.com/RoelHuijskens/website2.0/blob/master/website/src/assets/docs/Resume-eng.pdf"><b class="link">CV</b></a>
         </span>
 
     </div>
