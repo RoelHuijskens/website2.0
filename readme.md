@@ -22,6 +22,7 @@ To start the frontend of this website, follow these steps:
 4. Run the following command:
 
 ```
+cd website
 npm run dev
 ```
 
@@ -45,7 +46,8 @@ To start the backend of this website, follow these steps:
 3. Run the following command:
 
 ```
-uvicorn main:app --reload
+source setup.sh
+poetry run uvicorn app.main:app --reload
 ```
 
 This will start the backend server using Uvicorn with automatic reloading enabled. The server will listen for incoming requests and handle them accordingly.

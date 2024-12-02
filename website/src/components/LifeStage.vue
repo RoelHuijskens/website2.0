@@ -1,11 +1,13 @@
 <script setup>
 import { ref } from 'vue';
+import Stedin from './lifestage_info/APG.vue'
 import APG from './lifestage_info/APG.vue'
 import UU from './lifestage_info/UU.vue'
 import VU from './lifestage_info/VU.vue'
 
 
 const infoText = {
+  Stedin,
   APG,
   UU,
   VU
