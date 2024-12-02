@@ -9,5 +9,5 @@ setup.sh
 *_cache*
 app/test.py
 app/frontend_dist/
-**/**.pdf
+*.pdf
 __pycache__/
