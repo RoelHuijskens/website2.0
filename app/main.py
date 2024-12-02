@@ -2,6 +2,7 @@ from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 
+import os
 import uvicorn
 from typing import Optional
 from fastapi.staticfiles import StaticFiles
@@ -31,6 +32,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+frontend_dir = "app/frontend_dist"
 
 
 @app.post("/chat")
@@ -69,9 +72,10 @@ def chat_get(
     return chat_controller.get_chat(conversation_id=conversation_id, hash=hash)
 
 
-app.mount(
-    "/", StaticFiles(directory="app/frontend_dist", html=True), name="static"
-)
+if os.path.isdir(frontend_dir):
+    app.mount(
+        "/", StaticFiles(directory=frontend_dir, html=True), name="static"
+    )
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

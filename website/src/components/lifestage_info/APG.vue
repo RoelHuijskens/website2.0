@@ -2,11 +2,11 @@
     <div class="card-holder-left card-holder">
     <div class="card-format card-appear" id="card-initial" :style="{animationDuration: '1s'}">
         <h1 class="title-card-holder-full">APG Asset Management</h1>
-        <h3>2021-now</h3>
+        <h3>2021-2024</h3>
         <p>
             After completing my studies, I began my career as a DevOps Engineer at APG Asset Management.
-            In this role, I support our business with data analytics tools, including Posit, R, and Python.
-            My responsibilities involve consulting with our business units on developing and deploying Python, R, and Alteryx applications, as well as maintaining our infrastructure.
+            In this role, I supported our business with data analytics tools, including Posit, R, and Python.
+            My responsibilities involved consulting with our business units on developing and deploying Python, R, and Alteryx applications, as well as maintaining our infrastructure.
             This experience has significantly enhanced my technical skills and provided me with valuable insights into the operations of a large financial institution.
             I find the most satisfaction in my work when assisting our portfolio managers with their data challenges and helping them improve their technical skills.
         </p>

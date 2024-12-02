@@ -28,7 +28,6 @@ jobs:
         pip install poetry
         poetry install
         ls -lah scripts
-        cat ./scripts/linting_formatting.sh
     - name: Lint with flake8
       run: |
        poetry run bash ./scripts/linting_formatting.sh
