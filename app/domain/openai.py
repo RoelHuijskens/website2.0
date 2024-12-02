@@ -124,7 +124,8 @@ class OpenaiInterface:
                     response_disclaimer = ""
 
                 raw_response = content.text.value
-                pattern = r"【\S+†source】"
+                pattern = r"【\S+†.*】"
+                print(raw_response)
                 response_str = re.sub(pattern, "", raw_response)
 
                 return response_str + response_disclaimer, [
