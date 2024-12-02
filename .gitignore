@@ -8,3 +8,4 @@ setup.sh
 *.pyc*
 *_cache*
 app/test.py
+app/frontend_dist/
