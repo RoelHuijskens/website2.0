@@ -29,7 +29,7 @@
     <div class="card-format card-appear" :style="{animationDuration: '2s'}">
         <h2 class="title-card-holder-full">Projects</h2>
         <p>
-           At my current job, i gain more valueable experience with the cloud engineering.
+           At my current job, I gain more valueable experience with cloud engineering.
         </p>
     </div>
     </div>
